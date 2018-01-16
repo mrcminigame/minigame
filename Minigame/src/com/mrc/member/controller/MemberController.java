@@ -1,6 +1,6 @@
-package com.mrc.abc;
+package com.mrc.member.controller;
 
-public class main {
+public class MemberController {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
