@@ -5,7 +5,6 @@ import java.util.*;
 import java.io.*;
 
 public class FileConfig {
-
 	public List<String> componentScan(String pack) {
 		List<String> list = new ArrayList<String>();
 		try {
@@ -20,7 +19,7 @@ public class FileConfig {
 				String name = f.getName();
 				String ext = name.substring(name.lastIndexOf(".") + 1);
 				if (ext.equals("java")) {
-					// System.out.println(ext);
+					System.out.println(ext);
 					String str = pack + "." + name.substring(0, name.lastIndexOf("."));
 					list.add(str);
 				}

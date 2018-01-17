@@ -13,7 +13,7 @@ import com.mrc.controller.RequestMapping;
 @Controller
 public class BoardController {
 	@RequestMapping("member.do")
-	public String news_reply_new_insert(HttpServletRequest req, HttpServletResponse res) {
+	public String starlist(HttpServletRequest req, HttpServletResponse res) {
 //		try {
 //			req.setCharacterEncoding("EUC-KR");
 //		} catch (Exception ex) {
@@ -30,7 +30,7 @@ public class BoardController {
 //		rvo.setName(name);
 //		NewsDAO.replyNewInsert(rvo);
 //		req.setAttribute("no", bno);
-
+		System.out.println("asbasdb");
 		List<BoardVO> list = BoardService.starListData();
 		req.setAttribute("list", list);
 		return "member/memberList.jsp";

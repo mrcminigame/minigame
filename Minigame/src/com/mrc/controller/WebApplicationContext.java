@@ -22,7 +22,7 @@ public class WebApplicationContext {
 			// System.out.println("SAX파서기 생성");
 			SAXParser sp = spf.newSAXParser();
 			HandlerMapping hm = new HandlerMapping();
-
+			
 			sp.parse(new File(path), hm);
 
 			List<String> packList = hm.getList();
@@ -31,7 +31,7 @@ public class WebApplicationContext {
 			for (String pack : packList) {
 				List<String> p = fc.componentScan(pack);
 				for (String s : p) {
-					// System.out.println(s);
+					System.out.println(s);
 					list.add(s);
 				}
 			}

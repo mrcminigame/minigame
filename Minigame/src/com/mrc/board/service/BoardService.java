@@ -14,7 +14,6 @@ public class BoardService {
 	private static SqlSessionFactory ssf;
 	static { // 이벤트DAO
 		try {
-
 			Reader reader = Resources.getResourceAsReader("Config.xml");
 			ssf = new SqlSessionFactoryBuilder().build(reader);
 			// 파싱 완료

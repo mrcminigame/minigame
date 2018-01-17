@@ -9,12 +9,12 @@ public class BoardVO {
 		this.episodeid = episodeid;
 	}
 
-	public String getEpisoename() {
-		return episoename;
+	public String getEpisodename() {
+		return episodename;
 	}
 
-	public void setEpisoename(String episoename) {
-		this.episoename = episoename;
+	public void setEpisodename(String episodename) {
+		this.episodename = episodename;
 	}
 
 	public int getOpenyear() {
@@ -26,7 +26,7 @@ public class BoardVO {
 	}
 
 	private int episodeid;
-	private String episoename;
+	private String episodename;
 	private int openyear;
 
 	
