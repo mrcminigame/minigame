@@ -1,1 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrc.board.controller.BoardMapper">
+	<!-- 뉴스 표시 -->
+	<select id="starListData" resultType="BoardVO">
+		SELECT * from starwars
+	</select>
+<!-- 	<insert id="replyNewInsert" parameterType="NewsReplyVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT
+			NVL(MAX(no)+1,1) as no FROM news_reply
+		</selectKey>
+		INSERT INTO news_reply(no,bno,id,name,msg)
+		VALUES(#{no},#{bno},#{id},#{name},#{msg})
+	</insert>
+	<update id="replyUpdate" parameterType="NewsReplyVO">
+		UPDATE news_reply SET
+		msg=#{msg}
+		WHERE no=#{no}
+	</update>
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM news_reply
+		WHERE
+		no=#{no}
+	</delete> -->
+</mapper>
