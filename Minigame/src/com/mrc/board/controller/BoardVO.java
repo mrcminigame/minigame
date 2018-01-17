@@ -29,5 +29,4 @@ public class BoardVO {
 	private String episodename;
 	private int openyear;
 
-	
 }
