@@ -30,7 +30,7 @@ public class BoardController {
 //		rvo.setName(name);
 //		NewsDAO.replyNewInsert(rvo);
 //		req.setAttribute("no", bno);
-		System.out.println("asbasdb");
+		
 		List<BoardVO> list = BoardService.starListData();
 		req.setAttribute("list", list);
 		return "member/memberList.jsp";
