@@ -1,1 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrc.member.controller.MemberMapper">
+	<!-- 회원정보 조회 -->
+	<select id="selectMemberList" parameterType="MemberVO" resultType="MemberVO">
+		SELET	/*com.mrc.member.controller.MemberMapper.selectMemberList/
+			MEM_EML <!-- 이메일주소(아이디) -->
+			<!-- ,PWD -->	
+			,MEM_NM			/*이름*/
+			,NIC_NM 		/*닉네임*/
+			,PHN_NUM		/*전화번호*/
+			,MEM_GRD_CODE 	/*등급*/
+			,JOIN_DT 		/*등록날짜*/
+			,DOT_DT			/*삭제일*/
+			,MEM_STAT_CODE
+		FROM MEM_INFO
+		WHERE MEM_STAT_CODE = '0001'
+	</select>
+	<insert id ="inserMemberInfo" parameterType="MemberVO">
+		INSERT /*com.mrc.member.controller.MemberMapper.inserMemberInfo*/
+		INTO MEM_INFO (
+			MEM_EML
+			,PWD
+			,MEM_NM			/*이름*/
+			,NIC_NM 		/*닉네임*/
+			,PHN_NUM		/*전화번호*/
+			,MEM_GRD_CODE 	/*등급*/
+			JOIN_DT
+		)VALUES(
+			#{memEml}
+			,#{pwd}
+			,#{nicNm}
+			,#{phnNum}
+			,#{memGrdCode}
+			,sysdate
+		)
+	</insert>
+<!-- 	<insert id="replyNewInsert" parameterType="NewsReplyVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT
+			NVL(MAX(no)+1,1) as no FROM news_reply
+		</selectKey>
+		INSERT INTO news_reply(no,bno,id,name,msg)
+		VALUES(#{no},#{bno},#{id},#{name},#{msg})
+	</insert>
+	<update id="replyUpdate" parameterType="NewsReplyVO">
+		UPDATE news_reply SET
+		msg=#{msg}
+		WHERE no=#{no}
+	</update>
+	<delete id="replyDelete" parameterType="int">
+		DELETE FROM news_reply
+		WHERE
+		no=#{no}
+	</delete> -->
+</mapper>
