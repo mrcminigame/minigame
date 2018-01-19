@@ -18,7 +18,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		String path = config.getInitParameter("contextConfigLocation");
-		System.out.println(path);
+		//System.out.println(path);
 		wc = new WebApplicationContext(path);
 		list = wc.getList();
 	}
