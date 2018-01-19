@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<!-- PreparedStatement,ResultSet --> 		
-  		<mapper resource="com/mrc/board/controller/BoardMapper.xml" />
+  		<mapper resource="com/mrc/mapper/BoardMapper.xml" />
   		<!-- <mapper resource="com/mrc/rank/controller/RankMapper.xml" />
   		<mapper resource="com/mrc/gamemng/controller/GameMngMapper.xml" />
   		<mapper resource="com/mrc/member/controller/MemberMapper.xml" /> -->

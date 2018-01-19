@@ -1,5 +1,7 @@
 package com.mrc.rank.controller;
 
-public interface RankControllerDAO {
+import com.mrc.rank.service.RankService;
+
+public class RankControllerDAO implements RankService{
 
 }

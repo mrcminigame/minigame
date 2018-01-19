@@ -14,6 +14,7 @@ import com.mrc.controller.RequestMapping;
 public class BoardController {
 	@RequestMapping("member.do")
 	public String starlist(HttpServletRequest req, HttpServletResponse res) {
+		BoardDAO bs = new BoardDAO();
 //		try {
 //			req.setCharacterEncoding("EUC-KR");
 //		} catch (Exception ex) {
@@ -31,7 +32,7 @@ public class BoardController {
 //		NewsDAO.replyNewInsert(rvo);
 //		req.setAttribute("no", bno);
 		
-		List<BoardVO> list = BoardService.starListData();
+		List<BoardVO> list = bs.starListData();
 		req.setAttribute("list", list);
 		return "member/memberList.jsp";
 	}

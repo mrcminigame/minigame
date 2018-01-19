@@ -1,5 +1,7 @@
 package com.mrc.member.controller;
 
-public class MemberDAO {
+import com.mrc.member.service.MemberService;
+
+public class MemberDAO implements MemberService {
 
 }

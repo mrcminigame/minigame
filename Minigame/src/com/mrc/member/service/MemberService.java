@@ -1,5 +1,5 @@
 package com.mrc.member.service;
 
-public class MemberService {
+public interface MemberService {
 
 }
