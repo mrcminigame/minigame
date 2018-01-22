@@ -1,21 +1,17 @@
 package com.mrc.member.controller;
 
 public class MemberVO {
-	private String memEml;
-	private String pwd;
-	private String memNm;
-	private String nicNm;
-	private String phnNum;
-	private String memGrdCode;
-	private String joinDt;
-	private String dotDt;
-	private String memStatCode;
-	
-	public String getMemEml() {
-		return memEml;
+	public int getCount() {
+		return count;
 	}
-	public void setMemEml(String memEml) {
-		this.memEml = memEml;
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPwd() {
 		return pwd;
@@ -23,23 +19,23 @@ public class MemberVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getMemNm() {
-		return memNm;
+	public String getMemName() {
+		return memName;
 	}
-	public void setMemNm(String memNm) {
-		this.memNm = memNm;
+	public void setMemName(String memName) {
+		this.memName = memName;
 	}
-	public String getNicNm() {
-		return nicNm;
+	public String getNicName() {
+		return nicName;
 	}
-	public void setNicNm(String nicNm) {
-		this.nicNm = nicNm;
+	public void setNicName(String nicName) {
+		this.nicName = nicName;
 	}
-	public String getPhnNum() {
-		return phnNum;
+	public String getPhone() {
+		return phone;
 	}
-	public void setPhnNum(String phnNum) {
-		this.phnNum = phnNum;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getMemGrdCode() {
 		return memGrdCode;
@@ -47,23 +43,33 @@ public class MemberVO {
 	public void setMemGrdCode(String memGrdCode) {
 		this.memGrdCode = memGrdCode;
 	}
-	public String getJoinDt() {
-		return joinDt;
+	public String getRegDt() {
+		return regDt;
 	}
-	public void setJoinDt(String joinDt) {
-		this.joinDt = joinDt;
+	public void setRegDt(String regDt) {
+		this.regDt = regDt;
 	}
-	public String getDotDt() {
-		return dotDt;
+	public String getModDt() {
+		return modDt;
 	}
-	public void setDotDt(String dotDt) {
-		this.dotDt = dotDt;
+	public void setModDt(String modDt) {
+		this.modDt = modDt;
 	}
-	public String getMemStatCode() {
-		return memStatCode;
+	public String getUseYn() {
+		return useYn;
 	}
-	public void setMemStatCode(String memStatCode) {
-		this.memStatCode = memStatCode;
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
 	}
-
+	private int count;
+	private String email;
+	private String pwd;
+	private String memName;
+	private String nicName;
+	private String phone;
+	private String memGrdCode;
+	private String regDt;
+	private String modDt;
+	private String useYn;
+	
 }

@@ -10,8 +10,19 @@ import com.mrc.controller.RequestMapping;
 public class MainController {
 	@RequestMapping("main.do")
 	public String main_page(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("main_jsp", "../javascript/main/default.jsp");
-		return "javascript/main/main.jsp";
+		req.setAttribute("main_jsp", "../main/default.jsp");
+		return "view/main/main.jsp";
 	}
+	@RequestMapping("signUp.do")
+	public String sign_up(HttpServletRequest req, HttpServletResponse res) {
 
+		req.setAttribute("main_jsp", "../member/signUp.jsp");
+		
+		return "view/main/main.jsp";
+	}
+	@RequestMapping("login.do")
+	public String login(HttpServletRequest req, HttpServletResponse res) {
+		req.setAttribute("main_jsp", "../member/login.jsp");
+		return "view/main/main.jsp";
+	}
 }

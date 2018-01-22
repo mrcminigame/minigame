@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mrc.member.controller.MemberMapper">
 	<!-- 회원정보 조회 -->
-	<select id="selectMemberList" parameterType="MemberVO" resultType="MemberVO">
+	<select id="selectMemberList" parameterType="java.util.Map" resultType="MemberVO">
 		SELET	/*com.mrc.member.controller.MemberMapper.selectMemberList/
 			MEM_EML <!-- 이메일주소(아이디) -->
 			<!-- ,PWD -->	
