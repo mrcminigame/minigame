@@ -18,22 +18,21 @@
 		WHERE MEM_STAT_CODE = '0001'
 	</select>
 	<insert id ="inserMemberInfo" parameterType="MemberVO">
-		INSERT /*com.mrc.member.controller.MemberMapper.inserMemberInfo*/
-		INTO MEM_INFO (
-			MEM_EML
-			,PWD
-			,MEM_NM			/*이름*/
-			,NIC_NM 		/*닉네임*/
-			,PHN_NUM		/*전화번호*/
-			,MEM_GRD_CODE 	/*등급*/
-			JOIN_DT
-		)VALUES(
-			#{memEml}
-			,#{pwd}
-			,#{nicNm}
-			,#{phnNum}
-			,#{memGrdCode}
-			,sysdate
+			private String email;
+	private String pwd;
+	private String memName;
+	private String nicName;
+	private String phone;
+	private String memGrdCode;
+	private String regDt;
+	private String modDt;
+	private String useYn;
+		
+		insert into mem_info (
+			email, pwd, memName, nicName, phone memGrdCode, regDt, modDt, useYn
+		) values
+		(
+			#{email},#{pwd},#{memName},#{nicName},#{phone},1,,
 		)
 	</insert>
 <!-- 	<insert id="replyNewInsert" parameterType="NewsReplyVO">
