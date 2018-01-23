@@ -18,7 +18,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <!-- Side Navigation bar -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
   <div class="w3-container">
-     <img src="images/avatar.jpg" style="width:45%;" class="w3-round"><br><br>
+   <!--   <img src="images/avatar.jpg" style="width:45%;" class="w3-round"><br><br> -->
     <h4><b>사용자이름</b></h4>
     <p class="w3-text-grey">자기소개</p>
   </div>

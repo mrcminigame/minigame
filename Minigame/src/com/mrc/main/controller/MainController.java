@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
+import com.mrc.member.controller.MemberDAO;
 import com.mrc.rank.controller.RankDAO;
 import com.mrc.rank.controller.RankVO;
 
@@ -57,4 +58,5 @@ public class MainController {
 		req.setAttribute("main_jsp", "../board/boardList.jsp");
 		return "view/main/main.jsp";
 	}
+	
 }

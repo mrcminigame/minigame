@@ -35,7 +35,8 @@ public class MemberDAO implements MemberService {
 
 	public static String checkMember(String email) {
 		SqlSession session = ssf.openSession(true);
-		String check = Integer.toString(session.insert("checkMember", email));
+		
+		String check = Integer.toString(session.selectOne("checkMember", email)); 
 		session.close();
 		System.out.println(check);
 		return check;

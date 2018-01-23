@@ -1,29 +1,31 @@
 package com.mrc.member.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.xml.ws.ResponseWrapper;
 
+import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 
+@Controller
 public class MemberController {
+/*	
 	@RequestMapping("login.do")
 	public String login(HttpServletRequest req, HttpServletResponse res) {
 		req.setAttribute("main_jsp", "../gameMember/login.jsp");
 		return "view/member/login.jsp";
-	}
-	@RequestMapping("memberJoin.do")
+	}*/
+	
+	/*@RequestMapping("memberJoin.do")
 	public String join(HttpServletRequest req, HttpServletResponse res) {
 		req.setAttribute("main_jsp", "../member/memberJoin.jsp");
 		
 		return "view/member/memberJoin.jsp";
 	
-	}
-
+	}*/
+	
 	@RequestMapping("emailCheck.do")
-	public String checkMember(HttpServletRequest req, HttpServletResponse res)
+	public String checkMember(HttpServletRequest req, HttpServletResponse res )
 	{
 		try {
 			req.setCharacterEncoding("EUC-KR");
@@ -31,12 +33,14 @@ public class MemberController {
 			System.out.println("memberCheck :" + ex.getMessage());
 		}
 		String email = req.getParameter("email");
-		String count = MemberDAO.checkMember(email);
+		/*String count = MemberDAO.checkMember(email);
 		
 		System.out.println(count);
-		req.setAttribute(count, "count");
-		return "../member/memberJoin.jsp";
+		req.setAttribute(count, "count");*/
+		System.out.println(email);
+		return MemberDAO.checkMember(email);
 	}
+	
 	@RequestMapping("memberJoin.do")
 	public String memberJoin(HttpServletRequest req, HttpServletResponse res) {
 		try {

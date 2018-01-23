@@ -13,8 +13,8 @@
 <link href="css/newmember.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>  
 
 
 <!-- 이름 닉네임 체크 부분  -->
@@ -80,14 +80,13 @@ $(function(){
             return false;
         }
 
-
-	 	$.ajax({
-			type:'post',
-			url:'emailCheck.do',
-			data:{"email":email},
-		
-			success:function(res)
-			{
+		$.ajax({  
+			url : "emailCheck.do",
+	        type : 'POST',
+	        data :{"email":email},
+	        dataType: "json",
+			success:function(res){ 
+				alert(res);
 				var count=res.trim();
 				 if(count==0)
 				{
@@ -97,7 +96,6 @@ $(function(){
 				}
 				else
 				{
-					
 					$("#emailcheckBtn").prop('class', 'btn btn-warning');
 					alert('사용불가능한 이메일 입니다.');
 					$("#emailcheckBtn").text('사용불가');
@@ -105,7 +103,7 @@ $(function(){
 				}   
 			},
 			error:function(error) {
-				alert(data)
+		//		alert(data)
 				alert("!!AJAX FAIL"); 
 		 	} 
 		}); 
