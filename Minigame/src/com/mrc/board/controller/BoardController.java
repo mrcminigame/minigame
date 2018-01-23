@@ -12,7 +12,7 @@ import com.mrc.controller.RequestMapping;
 
 @Controller
 public class BoardController {
-	@RequestMapping("member.do")
+	/*@RequestMapping("member.do")
 	public String starlist(HttpServletRequest req, HttpServletResponse res) {
 		BoardDAO bs = new BoardDAO();
 //		try {
@@ -35,5 +35,5 @@ public class BoardController {
 		List<BoardVO> list = bs.starListData();
 		req.setAttribute("list", list);
 		return "member/memberList.jsp";
-	}
+	}*/
 }
