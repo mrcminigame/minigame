@@ -13,11 +13,11 @@ public class MainController {
 		req.setAttribute("main_jsp", "../main/default.jsp");
 		return "view/main/main.jsp";
 	}
-	@RequestMapping("signUp.do")
+	@RequestMapping("memberJoin.do")
 	public String sign_up(HttpServletRequest req, HttpServletResponse res) {
 
-		req.setAttribute("main_jsp", "../member/signUp.jsp");
-		
+		req.setAttribute("main_jsp", "../member/memberJoin.jsp");
+			
 		return "view/main/main.jsp";
 	}
 	@RequestMapping("login.do")
