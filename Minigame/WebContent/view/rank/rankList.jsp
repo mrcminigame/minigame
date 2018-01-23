@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,6 +27,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <li class="w3-padding-16">오진혁 : 570</li>
           <li class="w3-padding-16">장지해 : 530</li>
           <li class="w3-padding-16">이은비 : 500</li>
+          <c:forEach var="list" items="${list}">
+			<li>&nbsp;&nbsp; <span>${list.nicName}</span></li>
+			<li>&nbsp;&nbsp; <span>${list.totalScore}</span></li>
+			<li>&nbsp;&nbsp; <span>${list.win}</span></li>
+		</c:forEach>
+          
+          
           <li class="w3-padding-16">
             <h2>최고 점수 :580</h2>
             <span class="w3-opacity">per month</span>

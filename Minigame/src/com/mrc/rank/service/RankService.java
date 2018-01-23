@@ -1,5 +1,9 @@
 package com.mrc.rank.service;
 
-public interface RankService {
+import java.util.List;
 
+import com.mrc.rank.controller.RankVO;
+
+public interface RankService {
+	public List<RankVO> rankListData();
 }

@@ -1,1 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrc.mapper.GameMngMapper">
+	<!-- 뉴스 표시 -->
+	<select id="gameMngListData" resultType="RankVO">
+		SELECT 
+			R.EMAIL
+			,R.GAME_NO
+			,R.TOTAL_SCORE
+			,R.WIN
+			,R.LOSE
+			,R.HIGH_SCORE
+			,MI.NIC_NAME
+			,GI.GAME_NAME
+		FROM RANK R, MEM_INFO MI, GAME_INFO GI
+		WHERE R.EMAIL = MI.EMAIL
+		AND R.GAME_NO = GI.GAME_NO
+	</select>
+</mapper>
