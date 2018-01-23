@@ -38,7 +38,10 @@ public class MemberController {
 		System.out.println(count);
 		req.setAttribute(count, "count");*/
 		System.out.println(email);
-		return MemberDAO.checkMember(email);
+		String count =MemberDAO.checkMember(email);
+		req.setAttribute("count", count);
+		
+		return "view/member/memberJoin.jsp";
 	}
 	
 	@RequestMapping("memberJoin.do")

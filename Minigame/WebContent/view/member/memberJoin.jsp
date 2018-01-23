@@ -84,7 +84,7 @@ $(function(){
 			url : "emailCheck.do",
 	        type : 'POST',
 	        data :{"email":email},
-	        dataType: "json",
+	/*         dataType: "json", */
 			success:function(res){ 
 				alert(res);
 				var count=res.trim();
@@ -103,7 +103,7 @@ $(function(){
 				}   
 			},
 			error:function(error) {
-		//		alert(data)
+				alert(error)
 				alert("!!AJAX FAIL"); 
 		 	} 
 		}); 
