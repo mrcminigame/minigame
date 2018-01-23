@@ -33,5 +33,12 @@ public class MemberDAO implements MemberService {
 		session.close();
 	}
 
+	public static String checkMember(String email) {
+		SqlSession session = ssf.openSession(true);
+		String check = Integer.toString(session.insert("checkMember", email));
+		session.close();
+		System.out.println(check);
+		return check;
+	}
 
 }

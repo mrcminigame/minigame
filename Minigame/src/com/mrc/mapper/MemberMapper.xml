@@ -17,8 +17,13 @@
 		FROM MEM_INFO
 		WHERE MEM_STAT_CODE = '0001'
 	</select>
+	<select id="checkMember" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM MEM_INFO
+		WHERE EMAIL = #{email}
+	</select>
 	<insert id ="inserMemberInfo" parameterType="MemberVO">
-			private String email;
+		<!-- 	private String email;
 	private String pwd;
 	private String memName;
 	private String nicName;
@@ -27,7 +32,7 @@
 	private String regDt;
 	private String modDt;
 	private String useYn;
-		
+		 -->
 		insert into mem_info (
 			email, pwd, memName, nicName, phone memGrdCode, regDt, modDt, useYn
 		) values

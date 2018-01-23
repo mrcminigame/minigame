@@ -15,7 +15,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
 </head>
 <body>
-
     <!-- Pricing Tables -->
  <div class="w3-main" style="margin-left: 250px">
  	 <h4>게임 별 Rank5</h4>
@@ -32,8 +31,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 			<li>&nbsp;&nbsp; <span>${list.totalScore}</span></li>
 			<li>&nbsp;&nbsp; <span>${list.win}</span></li>
 		</c:forEach>
-          
-          
           <li class="w3-padding-16">
             <h2>최고 점수 :580</h2>
             <span class="w3-opacity">per month</span>
