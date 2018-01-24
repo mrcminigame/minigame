@@ -12,5 +12,5 @@ import com.mrc.board.controller.BoardVO;
 
 public interface BoardService {
 
-	public List<BoardVO> starListData();
+	public List<BoardVO> boardListData();
 }

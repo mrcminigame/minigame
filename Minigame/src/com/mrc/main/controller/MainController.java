@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mrc.board.controller.BoardDAO;
+import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 import com.mrc.member.controller.MemberDAO;
@@ -47,14 +49,14 @@ public class MainController {
 	
 	@RequestMapping("board.do")
 	public String board(HttpServletRequest req, HttpServletResponse res) {
-	/*	try {
+		try {
 			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception ex) {
-			System.out.println("rank :" + ex.getMessage());
+			System.out.println("board :" + ex.getMessage());
 		}
-		RankDAO rd = new RankDAO();
-		List<RankVO> list = rd.rankListData();
-		req.setAttribute("list", list);*/
+		BoardDAO bd = new BoardDAO();
+		List<BoardVO> boardList = bd.boardListData();
+		req.setAttribute("boardList", boardList);
 		req.setAttribute("main_jsp", "../board/boardList.jsp");
 		return "view/main/main.jsp";
 	}

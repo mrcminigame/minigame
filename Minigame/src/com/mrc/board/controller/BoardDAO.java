@@ -22,9 +22,9 @@ public class BoardDAO implements BoardService {
 		}
 	}
 
-	public List<BoardVO> starListData() {
+	public List<BoardVO> boardListData() {
 		SqlSession session = ssf.openSession();
-		List<BoardVO> list = session.selectList("starListData");
+		List<BoardVO> list = session.selectList("boardListData");
 		session.close();
 		return list;
 	}
