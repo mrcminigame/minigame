@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 	<context:component-scan base-package="com.mrc.board.controller"/>
+	<context:component-scan base-package="com.mrc.gamemng.controller"/>
 	<context:component-scan base-package="com.mrc.main.controller"/>
+	<context:component-scan base-package="com.mrc.member.controller"/>
+	<context:component-scan base-package="com.mrc.rank.controller"/>
 	<context:component-scan base-package="com.mrc.controller"/>		
 </beans>
