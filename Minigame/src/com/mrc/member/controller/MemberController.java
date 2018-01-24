@@ -9,41 +9,52 @@ import com.mrc.controller.RequestMapping;
 
 @Controller
 public class MemberController {
-/*	
-	@RequestMapping("login.do")
-	public String login(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("main_jsp", "../gameMember/login.jsp");
-		return "view/member/login.jsp";
-	}*/
-	
-	/*@RequestMapping("memberJoin.do")
-	public String join(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("main_jsp", "../member/memberJoin.jsp");
-		
-		return "view/member/memberJoin.jsp";
-	
-	}*/
-	
+	/*
+	 * @RequestMapping("login.do") public String login(HttpServletRequest req,
+	 * HttpServletResponse res) { req.setAttribute("main_jsp",
+	 * "../gameMember/login.jsp"); return "view/member/login.jsp"; }
+	 */
+
+	/*
+	 * @RequestMapping("memberJoin.do") public String join(HttpServletRequest
+	 * req, HttpServletResponse res) { req.setAttribute("main_jsp",
+	 * "../member/memberJoin.jsp");
+	 * 
+	 * return "view/member/memberJoin.jsp";
+	 * 
+	 * }
+	 */
+
 	@RequestMapping("emailCheck.do")
-	public String checkMember(HttpServletRequest req, HttpServletResponse res )
-	{
+	public String emailCheck(HttpServletRequest req, HttpServletResponse res) {
 		try {
 			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception ex) {
-			System.out.println("memberCheck :" + ex.getMessage());
+			System.out.println("emailCheck :" + ex.getMessage());
 		}
 		String email = req.getParameter("email");
-		/*String count = MemberDAO.checkMember(email);
-		
-		System.out.println(count);
-		req.setAttribute(count, "count");*/
 		System.out.println(email);
-		String count =MemberDAO.checkMember(email);
+		String count = MemberDAO.emailCheck(email);
 		req.setAttribute("count", count);
-		
-		return "view/member/memberJoin.jsp";
+
+		return "view/member/countCheck.jsp";
 	}
-	
+
+	@RequestMapping("nicNameCheck.do")
+	public String nicNameCheck(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+			System.out.println("nicNameCheck :" + ex.getMessage());
+		}
+		String nicName = req.getParameter("nicName");
+		System.out.println(nicName);
+		String count = MemberDAO.nicNameCheck(nicName);
+		req.setAttribute("count", count);
+
+		return "view/member/countCheck.jsp";
+	}
+
 	@RequestMapping("memberJoin.do")
 	public String memberJoin(HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -52,22 +63,22 @@ public class MemberController {
 			System.out.println("memberJoin :" + ex.getMessage());
 		}
 		MemberVO vo = new MemberVO();
-		
+
 		String email = req.getParameter("email");
 		String pwd = req.getParameter("pwd");
-		//String pwd2 = req.getParameter("pwd2");
-		//String memName = req.getParameter("memName");
 		String nicName = req.getParameter("nicName");
 		String phone = req.getParameter("phone");
-			
+		System.out.println(email);
+		System.out.println(pwd);
+		System.out.println(nicName);
+		System.out.println(phone);
 		vo.setEmail(email);
-		vo.setPwd(pwd);		
+		vo.setPwd(pwd);
 		vo.setNicName(nicName);
 		vo.setPhone(phone);
 		
-		
 		MemberDAO.memberJoin(vo);
-		req.setAttribute("main_jsp", "../main/main.jsp");
-		return "main.do";
+		req.setAttribute("main_jsp", "../main/default.jsp");
+		return "view/main/main.jsp";
 	}
 }
