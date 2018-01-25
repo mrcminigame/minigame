@@ -17,11 +17,17 @@
 		FROM MEM_INFO
 		WHERE MEM_STAT_CODE = '0001'
 	</select>
-	<select id="checkMember" parameterType="String" resultType="int">
+	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT count(*)
 		FROM MEM_INFO
 		WHERE EMAIL = #{email}
 	</select>
+	<select id="nicNameCheck" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM MEM_INFO
+		WHERE nic_name = #{nicName}
+	</select>
+	
 	<insert id ="inserMemberInfo" parameterType="MemberVO">
 		<!-- 	private String email;
 	private String pwd;
@@ -34,10 +40,10 @@
 	private String useYn;
 		 -->
 		insert into mem_info (
-			email, pwd, memName, nicName, phone memGrdCode, regDt, modDt, useYn
+			email, pwd, memName, nic_name, phone, mem_Grd_Code, regDt, modDt, useYn
 		) values
 		(
-			#{email},#{pwd},#{memName},#{nicName},#{phone},1,,
+			#{email},#{pwd},#{memName},#{nicName},#{phone},'001',sysdate,sysdate,'Y'
 		)
 	</insert>
 <!-- 	<insert id="replyNewInsert" parameterType="NewsReplyVO">
