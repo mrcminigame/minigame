@@ -75,17 +75,17 @@
 	$(function() {
 		$('#checkBtn').click(function() {
 			debugger
-			var nicName = $('#nicName').val();
-			if (nicName.trim() == "") {
-				$('#nicName').focus();
+			var nic_Name = $('#nic_Name').val();
+			if (nic_Name.trim() == "") {
+				$('#nic_Name').focus();
 				return;
 			}
 
 			$.ajax({
-				url : "nicNameCheck.do",
+				url : "nic_NameCheck.do",
 				type : 'POST',
 				data : {
-					"nicName" : nicName
+					"nic_Name" : nic_Name
 				},
 				success : function(res) {
 					alert(res.trim());
@@ -117,7 +117,7 @@
 	$(function() {
 	debugger
 		$('#join').click(function() {
-			var nicName = $('#nicName').val();
+			var nic_Name = $('#nic_Name').val();
 			var email = $('#email').val();
 			var pwd = $('#pwd').val();
 			var phone = $('#phone').val();
@@ -126,9 +126,9 @@
 			if (email == "") {
 				alert("이메일을 입력해 주세요.");
 				$('#email').focus();
-			} else if (nicName == "") {
+			} else if (nic_Name == "") {
 				alert("닉네임을 입력해주세요.");
-				$('#nicName').focus();
+				$('#nic_Name').focus();
 				return false;
 			} else if (pwd == "") {
 				alert("비밀번호를 입력해주세요");
@@ -141,8 +141,9 @@
 			} else if (emailcheckBtn == "중복확인") {
 				alert("이메일을 중복확인 해주세요")
 			} else {
-				alert("회원가입이 완료 되었습니다.");
-				$('#newform').submit();
+				
+				alert('회원가입');
+				$('#memForm').submit();
 			}
 			
 		});
@@ -163,9 +164,7 @@
 		<div class="col-md-6 col-md-offset-3" style="margin-top: 30px;">
 
 
-			<form method="post" action="memberJoin.do" id="newform">
-
-
+			<form method="post" action="memberInsert.do" id="memForm" accept-charset="EUC-KR" >
 				<!-- 이메일 입력 -->
 				<div class="email form-group">
 					<label for="username">이메일</label>
@@ -183,8 +182,8 @@
 					<label for="username">이름(닉네임)</label>
 					<div class="input-group">
 
-						<input type="text" class="form-control" name="nicName"
-							id="nicName" placeholder="이름(닉네임)"> <span
+						<input type="text" class="form-control" name="nic_Name"
+							id="nic_Name" placeholder="이름(닉네임)"> <span
 							class="input-group-btn"> <a href="#" class="btn btn-info"
 							id="checkBtn">중복확인</a>
 						</span>
@@ -209,9 +208,9 @@
 				<!-- 회원가입, 취소 버튼 -->
 				<div class="form-group text-center">
 
-					<input type="button" class="btn btn-info" id="join" value="회원가입" />
+					<input type="submit" class="btn btn-info" id="join" value="회원가입" />
 
-					<a href="../main.do" type="submit" class="btn btn-default">가입취소</a>
+					<a href="main.do" type="button" class="btn btn-default">가입취소</a>
 				</div>
 			</form>
 

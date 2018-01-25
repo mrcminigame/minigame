@@ -29,7 +29,9 @@ public class MemberDAO implements MemberService {
 
 	public static void memberJoin(MemberVO vo) {
 		SqlSession session = ssf.openSession(true);
-		session.insert("memberJoin", vo);
+		System.out.println("»Â¿Ω");
+		session.insert("inserMemberInfo", vo);
+		session.commit();
 		session.close();
 	}
 
@@ -42,12 +44,28 @@ public class MemberDAO implements MemberService {
 		return check;
 	}
 
-	public static String nicNameCheck(String nicName) {
+	public static String nic_NameCheck(String nic_Name) {
 		SqlSession session = ssf.openSession(true);
 
-		String check = Integer.toString(session.selectOne("nicNameCheck", nicName));
+		String check = Integer.toString(session.selectOne("nic_NameCheck", nic_Name));
 		session.close();
 		System.out.println(check);
 		return check;
+	}
+
+	public static MemberVO passwordCheck(String email) {
+		MemberVO vo = new MemberVO();
+		SqlSession session = ssf.openSession();
+		try {
+			vo = session.selectOne("passwordCheck", email);
+		} catch (Exception ex) {
+			System.out.println("passwordCheck " + ex.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		
+		return vo;
 	}
 }
