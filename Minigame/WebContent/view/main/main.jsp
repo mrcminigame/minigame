@@ -43,7 +43,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="logout.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
     </c:if>
   </div>
-</nav>
+</nav>  
 	
 	
 <jsp:include page="${main_jsp }"></jsp:include>
