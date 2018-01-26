@@ -35,10 +35,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="board.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Q/A</a>
     <a href="memberJoin.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Sign Up</a>
     <c:if test="${sessionScope.email==null }">
-    <a href="login.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Login</a>
+ 	   <a href="login.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Login</a>
     </c:if>
     <c:if test="${sessionScope.email!=null }">
-    <a href="logout.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
+    	<a href="logout.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
     </c:if>
   </div>
 </nav>
