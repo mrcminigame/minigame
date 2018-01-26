@@ -1,6 +1,8 @@
 
 package com.mrc.main.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,10 +56,36 @@ public class MainController {
 		} catch (Exception ex) {
 			System.out.println("board :" + ex.getMessage());
 		}
-		BoardDAO bd = new BoardDAO();
-		List<BoardVO> boardList = bd.boardListData();
-		req.setAttribute("boardList", boardList);
-		req.setAttribute("main_jsp", "../board/boardList.jsp");
+		  BoardDAO bd = new BoardDAO();
+		  BoardVO boardVO = new BoardVO();
+		
+		  String page = req.getParameter("page");
+		
+	      // request => 기존요청값 + 추가 (setAttribute())
+	      if(page==null)
+	         page="1";
+	      int curpage = Integer.parseInt(page);
+	      int rowSize=10;
+	      int start = (rowSize*curpage)-(rowSize-1);
+	      int end = rowSize*curpage;
+	      
+	      boardVO.setStart(start);
+	      boardVO.setEnd(end);
+	      
+	      Date date = new Date();
+	      SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+	      String today = sdf.format(date);
+	      
+	      bd.updateViewCnt();
+	      List<BoardVO> boardList = bd.boardListData(boardVO);
+	
+	      int totalpage= BoardDAO.boardTotalPage();
+	      
+	      req.setAttribute("boardList", boardList);
+	      req.setAttribute("curpage", curpage);
+	      req.setAttribute("totalpage", totalpage);
+	      req.setAttribute("today", today);
+	      req.setAttribute("main_jsp", "../board/boardList.jsp");
 		return "view/main/main.jsp";
 	}
 	
@@ -75,9 +103,10 @@ public class MainController {
 			System.out.println("boardDetail :" + ex.getMessage());
 		}
 		BoardDAO bd = new BoardDAO();
-		String baordNo = req.getParameter("baordNo");
-		List<BoardVO> boardDetailInfo = bd.boardDetailInfo(baordNo);
-		req.setAttribute("boardDetailInfo", boardDetailInfo);
+		String boardNo = req.getParameter("boardNo");
+		
+		BoardVO detail = bd.boardDetailInfo(boardNo);
+		req.setAttribute("detail", detail);
 		req.setAttribute("main_jsp", "../board/boardDetail.jsp");
 		return "view/main/main.jsp";
 	}
