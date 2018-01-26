@@ -28,4 +28,19 @@ public class BoardDAO implements BoardService {
 		session.close();
 		return list;
 	}
+
+	public void insertBoardInq(BoardVO boardVO) {
+		SqlSession session = ssf.openSession();
+		session.insert("insertBoardInq",boardVO);
+		session.commit();
+		session.close();
+		
+	}
+
+	public List<BoardVO> boardDetailInfo(String baordNo) {
+		SqlSession session = ssf.openSession();
+		List<BoardVO> list = session.selectList("boardDetailInfo",baordNo);
+		session.close();
+		return list;
+	}
 }

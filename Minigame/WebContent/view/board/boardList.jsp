@@ -31,6 +31,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p>512312311</p>
       </div>
     </div> -->
+ 	<span><a href="BoardRegistView.do" id="regBtn" class="w3-btn w3-white w3-border w3-border-green w3-round-xlarge">µî·Ï</a></span>   
     <hr class="w3-opacity">
     <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
 		<tr class="w3-grey">
@@ -43,9 +44,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		<tbody>
 			 <c:forEach var="result" items="${boardList}">
 				<tr>
-				  <td>${result.boardNo}</td>
+				  <td>${result.rowNum}</td>
 				  <td>${result.nicName}</td>
-				  <td>${result.inqTitle}</td>
+				  <td><a href="">${result.inqTitle}</a></td>
 				  <td>${result.viewCnt}</td>
 				  <td>${result.inqRegDt}</td>
 				</tr>
@@ -55,4 +56,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
  </div>
 </body>
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+});
+</script>
 </html>
+
+
+

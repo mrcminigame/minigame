@@ -15,6 +15,7 @@ public class BoardVO {
 	private String inqUseYn;
 	private String ansUseYn;
 	private String nicName;
+	private String rowNum;
 	
 	public String getInqTitle() {
 		return inqTitle;
@@ -99,6 +100,12 @@ public class BoardVO {
 	}
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
+	}
+	public String getRowNum() {
+		return rowNum;
+	}
+	public void setRowNum(String rowNum) {
+		this.rowNum = rowNum;
 	}
 	
 

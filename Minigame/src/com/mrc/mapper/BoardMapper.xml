@@ -5,28 +5,34 @@
 	<!-- 게시판조회-->
 	<select id="boardListData" resultType="BoardVO">
 		SELECT 
-			BOARD_NO as boardNo
-			,INQ_TITLE as inqTitle
-			,INQ_MEM_EMAIL as inqMemEmail
-			,VIEW_CNT as viewCnt
-			,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
-			,MI.NIC_NAME as	nicName
-		FROM QA_BOARD QB,MEM_INFO MI
-		WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
-		AND INQ_USE_YN = 'Y'
-		ORDER BY INQ_REG_DT DESC
+			*
+		FROM(
+			SELECT	rownum
+				,BOARD_NO as boardNo
+				,INQ_TITLE as inqTitle
+				,INQ_MEM_EMAIL as inqMemEmail
+				,VIEW_CNT as viewCnt
+				,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
+				,MI.NIC_NAME as	nicName
+			FROM QA_BOARD QB,MEM_INFO MI
+			WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
+			AND INQ_USE_YN = 'Y'
+           
+		) order by rownum desc
+		
 	</select>
 	
 	<!--댓글,상세조회  -->
-	<select id="ansBoardList" parameterType="Int" resultType="BoardVO">
+	<select id="boardDetailInfo" parameterType="String" resultType="BoardVO">
 		SELECT 
 			INQ_TITLE as inqTitle
 			,INQ_CONTENT as inqContent
+			,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
 			,ANS_CONTENT as ansContent
 			,ANS_MEM_EMAIL as ansMemEmail
-			,ANS_REG_DT as ansRegDt
+			,TO_CHAR(ANS_REG_DT,'YYYY-MM-DD') as ansRegDt
+			,ANS_USE_YN as ansUseYn
 		FROM QA_BOARD
-		WHERE ANS_USE_YN = 'Y'
 		AND BOARD_NO = #{boardNo}
 		ORDER BY ANS_REG_DT DESC
 	</select>
@@ -37,8 +43,8 @@
 			SELECT
 			NVL(MAX(no)+1,1) as no FROM news_reply
 		</selectKey> -->
-		INSERT INTO QA_BOARD(BOARD_NO,INQ_TITLE,INQ_CONTENT,INQ_REG_DT,INQ_MEM_EMAIL)
-		VALUES(BOARD_SEQ.NEXT_VAL,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail})
+		INSERT INTO QA_BOARD(BOARD_NO,INQ_TITLE,INQ_CONTENT,INQ_REG_DT,INQ_MEM_EMAIL,INQ_USE_YN)
+		VALUES(BOARD_SEQ.nextVal,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail},'Y')
 	</insert>
 	
 	<!--게시판삭제  -->
