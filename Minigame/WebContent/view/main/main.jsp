@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,16 +20,26 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
   <div class="w3-container">
    <!--   <img src="images/avatar.jpg" style="width:45%;" class="w3-round"><br><br> -->
-    <h4><b>사용자이름</b></h4>
-    <p class="w3-text-grey">자기소개</p>
+   <c:if test="${sessionScope.email!=null }">
+    <h4><b>${sessionScope.email }</b></h4>
+    <p class="w3-text-grey">${sessionScope.nic_Name }</p>
+    </c:if>
+    <c:if test="${sessionScope.email==null }">
+        <h4><b>환영합니다.</b></h4>
+    <p class="w3-text-grey">방문자님</p>
+    </c:if>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Main</a> 
     <a href="rank.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Rank</a>
     <a href="board.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Q/A</a>
     <a href="memberJoin.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Sign Up</a>
+    <c:if test="${sessionScope.email==null }">
     <a href="login.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Login</a>
-    
+    </c:if>
+    <c:if test="${sessionScope.email!=null }">
+    <a href="logout.do" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
+    </c:if>
   </div>
 </nav>
 	
