@@ -22,9 +22,9 @@ public class BoardDAO implements BoardService {
 		}
 	}
 
-	public List<BoardVO> boardListData() {
+	public List<BoardVO> boardListData(BoardVO boardVO) {
 		SqlSession session = ssf.openSession();
-		List<BoardVO> list = session.selectList("boardListData");
+		List<BoardVO> list = session.selectList("boardListData",boardVO);
 		session.close();
 		return list;
 	}
@@ -37,10 +37,36 @@ public class BoardDAO implements BoardService {
 		
 	}
 
-	public List<BoardVO> boardDetailInfo(String baordNo) {
+	public BoardVO boardDetailInfo(String boardNo) {
 		SqlSession session = ssf.openSession();
-		List<BoardVO> list = session.selectList("boardDetailInfo",baordNo);
+		BoardVO bv = session.selectOne("boardDetailInfo",boardNo);
 		session.close();
-		return list;
+		return bv;
+	}
+
+	// 총페이지 
+    public static int boardTotalPage() {
+       int total = 0;
+       SqlSession session = null;
+       
+       try {
+          // session : connection 연결
+          session = ssf.openSession();
+          total = session.selectOne("boardTotalPage");
+       } catch(Exception e) {
+          System.out.println(e.getMessage());
+       } finally {
+          // 반환
+          if(session!=null)
+             session.close();
+       }
+       return total;
+    }
+
+	public void updateViewCnt() {
+		SqlSession session = ssf.openSession();
+		session.update("updateViewCnt");
+		session.commit();
+		session.close();
 	}
 }

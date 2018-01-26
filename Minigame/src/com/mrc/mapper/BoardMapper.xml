@@ -3,24 +3,64 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mrc.board.controller.BoardMapper">
 	<!-- 게시판조회-->
-	<select id="boardListData" resultType="BoardVO">
+	<select id="boardListData" parameterType="BoardVO" resultType="BoardVO">
 		SELECT 
-			*
-		FROM(
-			SELECT	rownum
-				,BOARD_NO as boardNo
-				,INQ_TITLE as inqTitle
-				,INQ_MEM_EMAIL as inqMemEmail
-				,VIEW_CNT as viewCnt
-				,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
-				,MI.NIC_NAME as	nicName
-			FROM QA_BOARD QB,MEM_INFO MI
-			WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
-			AND INQ_USE_YN = 'Y'
-           
-		) order by rownum desc
-		
+			* 
+			FROM(
+				SELECT 
+					*
+				FROM(
+					SELECT	rownum as num
+						,BOARD_NO as boardNo
+						,INQ_TITLE as inqTitle
+						,INQ_MEM_EMAIL as inqMemEmail
+						,VIEW_CNT as viewCnt
+						,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
+						,MI.NIC_NAME as	nicName
+					FROM QA_BOARD QB,MEM_INFO MI
+					WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
+					AND INQ_USE_YN = 'Y'
+		           
+				) order by num desc)
+	  WHERE num BETWEEN #{start} AND #{end}
+	  
+	<!--   
+	 
+   select * 
+      from (
+         SELECT *
+         FROM (
+             SELECT
+                 ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS rnum 	,BOARD_NO as boardNo
+						,INQ_TITLE as inqTitle
+            	FROM QA_BOARD QB,MEM_INFO MI
+					WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
+					AND INQ_USE_YN = 'Y'
+                    ORDER BY rnum DESC) pagetable 
+             where rnum <= 20 ) 
+             where rnum >= 1;
+             
+              -->
+	  
 	</select>
+	
+  <!--  <select id="eventListData" resultType="EventVO" parameterType="java.util.Map">
+      SELECT
+      event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit,num
+      FROM (SELECT
+      event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit,rownum
+      as num
+      FROM (SELECT
+      event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit
+      FROM gggl_event ORDER BY event_no DESC))
+      WHERE num BETWEEN #{start} AND
+      #{end}
+   </select> -->
+   
+   <!-- 총페이지 -->
+   <select id="boardTotalPage" resultType="int">
+      SELECT CEIL(COUNT(*)/10) FROM QA_BOARD
+   </select>
 	
 	<!--댓글,상세조회  -->
 	<select id="boardDetailInfo" parameterType="String" resultType="BoardVO">
@@ -33,7 +73,7 @@
 			,TO_CHAR(ANS_REG_DT,'YYYY-MM-DD') as ansRegDt
 			,ANS_USE_YN as ansUseYn
 		FROM QA_BOARD
-		AND BOARD_NO = #{boardNo}
+		WHERE BOARD_NO = #{boardNo}
 		ORDER BY ANS_REG_DT DESC
 	</select>
 	
@@ -43,8 +83,8 @@
 			SELECT
 			NVL(MAX(no)+1,1) as no FROM news_reply
 		</selectKey> -->
-		INSERT INTO QA_BOARD(BOARD_NO,INQ_TITLE,INQ_CONTENT,INQ_REG_DT,INQ_MEM_EMAIL,INQ_USE_YN)
-		VALUES(BOARD_SEQ.nextVal,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail},'Y')
+		INSERT INTO QA_BOARD(BOARD_NO,INQ_TITLE,INQ_CONTENT,INQ_REG_DT,INQ_MEM_EMAIL,VIEW_CNT,INQ_USE_YN)
+		VALUES(BOARD_SEQ.nextVal,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail},0,'Y')
 	</insert>
 	
 	<!--게시판삭제  -->
@@ -60,6 +100,14 @@
 		</choose>
 		SET INQ_USE_YN = 'N'
 		WHERE BOARD_NO = #{boardNo}
+	</update>
+	<!--게시판삭제  -->
+	<update id="updateViewCnt" parameterType="int"> 
+		<!-- <selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT VIEW_CNT FROM QA_BOARD WHERE BOARD_NO = #{BOARD_NO}
+		</selectKey> 
+		UPDATE QA_BOARD
+		SET VIEW_CNT = no -->
 	</update>
 	
 </mapper>
