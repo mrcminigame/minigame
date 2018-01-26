@@ -43,6 +43,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
 </nav>
 	
+	
 <jsp:include page="${main_jsp }"></jsp:include>
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-dark-grey" style="margin-left: 250px">
