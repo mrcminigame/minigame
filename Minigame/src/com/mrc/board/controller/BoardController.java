@@ -12,28 +12,27 @@ import com.mrc.controller.RequestMapping;
 
 @Controller
 public class BoardController {
-	/*@RequestMapping("member.do")
+	@RequestMapping("registBoardInq.do")
 	public String starlist(HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("¿©±â");
 		BoardDAO bs = new BoardDAO();
-//		try {
-//			req.setCharacterEncoding("EUC-KR");
-//		} catch (Exception ex) {
-//		}
-//		HttpSession session = req.getSession();
-//		String bno = req.getParameter("bno");
-//		String msg = req.getParameter("msg");
-//		String id = (String) session.getAttribute("email");
-//		String name = (String) session.getAttribute("name");
-//		NewsReplyVO rvo = new NewsReplyVO();
-//		rvo.setBno(Integer.parseInt(bno));
-//		rvo.setMsg(msg);
-//		rvo.setId(id);
-//		rvo.setName(name);
-//		NewsDAO.replyNewInsert(rvo);
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+		}
+	//	HttpSession session = req.getSession();
+		String inqTitle = req.getParameter("inqTitle");
+		String inqContent = req.getParameter("inqContent");
+		BoardVO boardVO = new BoardVO();
+		boardVO.setInqTitle(inqTitle);
+		boardVO.setInqContent(inqContent);
+		boardVO.setInqMemEmail("hong@gil.dong");
+		
+		bs.insertBoardInq(boardVO);
 //		req.setAttribute("no", bno);
 		
-		List<BoardVO> list = bs.starListData();
-		req.setAttribute("list", list);
-		return "member/memberList.jsp";
-	}*/
+		//List<BoardVO> list = bs.boardListData();
+	//	req.setAttribute("list", list);
+		return "board.do";
+	}
 }

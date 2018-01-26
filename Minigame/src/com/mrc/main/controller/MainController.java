@@ -61,4 +61,25 @@ public class MainController {
 		return "view/main/main.jsp";
 	}
 	
+	@RequestMapping("BoardRegistView.do")
+	public String BoardRegistView(HttpServletRequest req, HttpServletResponse res) {
+		req.setAttribute("main_jsp", "../board/boardRegist.jsp");
+		return "view/main/main.jsp";
+	}
+	
+	@RequestMapping("BoardDetailView.do")
+	public String BoardDetailView(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+			System.out.println("boardDetail :" + ex.getMessage());
+		}
+		BoardDAO bd = new BoardDAO();
+		String baordNo = req.getParameter("baordNo");
+		List<BoardVO> boardDetailInfo = bd.boardDetailInfo(baordNo);
+		req.setAttribute("boardDetailInfo", boardDetailInfo);
+		req.setAttribute("main_jsp", "../board/boardDetail.jsp");
+		return "view/main/main.jsp";
+	}
+	
 }
