@@ -48,36 +48,8 @@
 
 $(document).ready(function() {
 	$( "#regBoardBtn" ).click(function() {
-		/* console.log($('#regFrm').serialize());
-				alert("hi");
-				$.ajax({
-					url : "registBoard.do",
-					type : 'POST',
-					data : $('#regFrm').serialize(),
-					dataType: "json", 
-					success : function(res) {
-						var count = res.trim();
-						 if (count == 0) {
-							$("#emailcheckBtn").prop('class',
-									'btn btn-success');
-							alert('사용가능한 이메일 입니다.');
-							$("#emailcheckBtn").text('사용가능');
-						} else {
-							$("#emailcheckBtn").prop('class',
-									'btn btn-warning');
-							alert('사용불가능한 이메일 입니다.');
-							$("#emailcheckBtn").text('사용불가');
-
-						} 
-						alert("성공!!!")
-					},
-					error : function(error) {
-						alert(error)
-						alert("!!AJAX FAIL");
-					}
-				}); */
-				$("#regFrm").submit();
-			});
+		$("#regFrm").submit();
+	});
 	
 	
 });

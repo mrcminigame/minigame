@@ -15,7 +15,8 @@ public class BoardVO {
 	private String inqUseYn;
 	private String ansUseYn;
 	private String nicName;
-	private String num;
+	private String rowNumber;
+	private String flag;
 	private int start;
 	private int end;
 	
@@ -116,11 +117,18 @@ public class BoardVO {
 	public void setEnd(int end) {
 		this.end = end;
 	}
-	public String getNum() {
-		return num;
+	public String getRowNumber() {
+		return rowNumber;
 	}
-	public void setNum(String num) {
-		this.num = num;
+	public void setRowNumber(String rowNumber) {
+		this.rowNumber = rowNumber;
 	}
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+	
 
 }

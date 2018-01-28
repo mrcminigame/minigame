@@ -1,20 +1,16 @@
 package com.mrc.board.controller;
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.mrc.board.service.BoardService;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 
 @Controller
 public class BoardController {
 	@RequestMapping("registBoardInq.do")
-	public String starlist(HttpServletRequest req, HttpServletResponse res) {
-		System.out.println("여기");
+	public String registBoardInq(HttpServletRequest req, HttpServletResponse res) {
 		BoardDAO bs = new BoardDAO();
 		try {
 			req.setCharacterEncoding("EUC-KR");
@@ -26,13 +22,28 @@ public class BoardController {
 		BoardVO boardVO = new BoardVO();
 		boardVO.setInqTitle(inqTitle);
 		boardVO.setInqContent(inqContent);
-		boardVO.setInqMemEmail("hong@gil.dong");
+		boardVO.setInqMemEmail("hong@gil.dong"); //TODO:로그인 계정받아오기
 		
 		bs.insertBoardInq(boardVO);
-//		req.setAttribute("no", bno);
+		return "board.do";
+	}
+	
+	
+	@RequestMapping("delBoard.do")
+	public String delBoardInq(HttpServletRequest req, HttpServletResponse res) {
+		BoardDAO bs = new BoardDAO();
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+		}
+
+		int boardNo = Integer.parseInt(req.getParameter("boardNo"));
+		String flag = req.getParameter("flag");
+		BoardVO boardVO = new BoardVO();
+		boardVO.setBoardNo(boardNo);
+		boardVO.setFlag("inq");
 		
-		//List<BoardVO> list = bs.boardListData();
-	//	req.setAttribute("list", list);
+		bs.deleteBoard(boardVO);
 		return "board.do";
 	}
 }

@@ -52,8 +52,12 @@ public class MainController {
 			System.out.println("rank :" + ex.getMessage());
 		}
 		RankDAO rd = new RankDAO();
-		List<RankVO> list = rd.rankListData();
-		req.setAttribute("list", list);
+		int gameNo = 1;
+		List<RankVO> firstList = rd.rankListData(gameNo);
+		req.setAttribute("firstList", firstList);
+		gameNo = 2;
+		List<RankVO> secondList = rd.rankListData(gameNo);
+		req.setAttribute("secondList", secondList);
 		req.setAttribute("main_jsp", "../rank/rankList.jsp");
 		return "view/main/main.jsp";
 	}
@@ -65,36 +69,37 @@ public class MainController {
 		} catch (Exception ex) {
 			System.out.println("board :" + ex.getMessage());
 		}
-		BoardDAO bd = new BoardDAO();
-		BoardVO boardVO = new BoardVO();
+		  BoardDAO bd = new BoardDAO();
+		  BoardVO boardVO = new BoardVO();
+		
+		  String page = req.getParameter("page");
+		
+	      // request => 기존요청값 + 추가 (setAttribute())
+	      if(page==null)
+	         page="1";
+	      int curpage = Integer.parseInt(page);
+	      int rowSize=10;
+	      int start = (rowSize*curpage)-(rowSize-1);
+	      int end = rowSize*curpage;
+	      
+	      boardVO.setStart(start);
+	      boardVO.setEnd(end);
+	      
+	      Date date = new Date();
+	      SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+	      String today = sdf.format(date);
+	      
+	    
+	      List<BoardVO> boardList = bd.boardListData(boardVO);
+	
+	      int totalpage= BoardDAO.boardTotalPage();
+	      
+	      req.setAttribute("boardList", boardList);
+	      req.setAttribute("curpage", curpage);
+	      req.setAttribute("totalpage", totalpage);
+	      req.setAttribute("today", today);
+	      req.setAttribute("main_jsp", "../board/boardList.jsp");
 
-		String page = req.getParameter("page");
-
-		// request => 기존요청값 + 추가 (setAttribute())
-		if (page == null)
-			page = "1";
-		int curpage = Integer.parseInt(page);
-		int rowSize = 10;
-		int start = (rowSize * curpage) - (rowSize - 1);
-		int end = rowSize * curpage;
-
-		boardVO.setStart(start);
-		boardVO.setEnd(end);
-
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today = sdf.format(date);
-
-		bd.updateViewCnt();
-		List<BoardVO> boardList = bd.boardListData(boardVO);
-
-		int totalpage = BoardDAO.boardTotalPage();
-
-		req.setAttribute("boardList", boardList);
-		req.setAttribute("curpage", curpage);
-		req.setAttribute("totalpage", totalpage);
-		req.setAttribute("today", today);
-		req.setAttribute("main_jsp", "../board/boardList.jsp");
 		return "view/main/main.jsp";
 	}
 
@@ -112,7 +117,9 @@ public class MainController {
 			System.out.println("boardDetail :" + ex.getMessage());
 		}
 		BoardDAO bd = new BoardDAO();
-		String boardNo = req.getParameter("boardNo");
+
+		int boardNo = Integer.parseInt(req.getParameter("boardNo"));
+		bd.updateViewCnt(boardNo);
 
 		BoardVO detail = bd.boardDetailInfo(boardNo);
 		req.setAttribute("detail", detail);

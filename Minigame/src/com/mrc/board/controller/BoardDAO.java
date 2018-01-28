@@ -37,7 +37,7 @@ public class BoardDAO implements BoardService {
 		
 	}
 
-	public BoardVO boardDetailInfo(String boardNo) {
+	public BoardVO boardDetailInfo(int boardNo) {
 		SqlSession session = ssf.openSession();
 		BoardVO bv = session.selectOne("boardDetailInfo",boardNo);
 		session.close();
@@ -63,9 +63,16 @@ public class BoardDAO implements BoardService {
        return total;
     }
 
-	public void updateViewCnt() {
+	public void updateViewCnt(int boardNo) {
 		SqlSession session = ssf.openSession();
-		session.update("updateViewCnt");
+		session.update("updateViewCnt",boardNo);
+		session.commit();
+		session.close();
+	}
+
+	public void deleteBoard(BoardVO boardVO) {
+		SqlSession session = ssf.openSession();
+		session.update("deleteBoard",boardVO);
 		session.commit();
 		session.close();
 	}

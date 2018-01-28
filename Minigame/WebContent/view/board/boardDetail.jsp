@@ -25,10 +25,13 @@
  <div class="w3-container w3-teal">
   <h2>문의사항</h2>
 </div>
-<form class="w3-container w3-card-4" id="regFrm" action="registBoardInq.do" method="post">
+<form class="w3-container w3-card-4" id="delFrm" action="delBoard.do" method="post">
+	<input type ="hidden" name="boardNo" value="${param.boardNo}"/>
+	<input type ="hidden" name="flag" value=""/>
+</form>
 <p>
 <div class= "w3-right-align">
-	<span>작성자 : 이은비</span>
+	<span>작성자 : 이은비 </span>
 	<span>등록일: 2018.01.26</span>
 </div>
 <br>
@@ -58,51 +61,32 @@
 			</c:when>
 		</c:choose>
 	</textarea>
-</p>
+	<div class = "w3-right-align">
+		 <button type="button" id="delBoardAns" class="w3-btn w3-red " style="width:120px">댓글삭제 &nbsp;</button>
+	 </div>
 
 <br>
-  <p><button type="button" id="regBoardBtn" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; &#10095;</button></p>
-  <button type="button" id="listBtn" class="w3-btn w3-padding w3-teal" style="width:120px" onclick=" location.href='board.do'">list &nbsp; &#10095;</button></p>
-</form>
+  <p>
+  <button type="button" id="listBtn" class="w3-btn w3-padding w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
+  <button type="button" id="delBoardInq" class="w3-btn w3-padding w3-teal" style="width:120px">삭제 &nbsp; &#10095;</button>
+
  </div>
 </body>
-
 <script type="text/javascript">
-
-$(document).ready(function() {
-	$( "#regBoardBtn" ).click(function() {
-		/* console.log($('#regFrm').serialize());
-				alert("hi");
-				$.ajax({
-					url : "registBoard.do",
-					type : 'POST',
-					data : $('#regFrm').serialize(),
-					dataType: "json", 
-					success : function(res) {
-						var count = res.trim();
-						 if (count == 0) {
-							$("#emailcheckBtn").prop('class',
-									'btn btn-success');
-							alert('사용가능한 이메일 입니다.');
-							$("#emailcheckBtn").text('사용가능');
-						} else {
-							$("#emailcheckBtn").prop('class',
-									'btn btn-warning');
-							alert('사용불가능한 이메일 입니다.');
-							$("#emailcheckBtn").text('사용불가');
-
-						} 
-						alert("성공!!!")
-					},
-					error : function(error) {
-						alert(error)
-						alert("!!AJAX FAIL");
-					}
-				}); */
-				$("#regFrm").submit();
-			});
-	
-	
-});
+	$(document).ready(function() {
+		$( "#delBoardInq" ).click(function() {
+			if(confirm('삭제하시겠습니까?')){
+				$("#flag").val('inq');
+				debugger
+				$("#delFrm").submit();
+			}
+		});
+		$( "#delBoardAns" ).click(function() {
+			if(confirm('삭제하시겠습니까?')){
+				$("#flag").val('ans');
+				$("#delFrm").submit();
+			}
+		});	
+	});
 </script>
 </html>
