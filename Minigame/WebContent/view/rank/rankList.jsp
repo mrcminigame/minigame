@@ -21,43 +21,44 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-black w3-xlarge w3-padding-32">오델로</li>
-          <li class="w3-padding-16">서경진 : 580</li>
-          <li class="w3-padding-16">오진혁 : 570</li>
-          <li class="w3-padding-16">장지해 : 530</li>
-          <li class="w3-padding-16">이은비 : 500</li>
-          <c:forEach var="list" items="${list}">
-			<li>&nbsp;&nbsp; <span>${list.nicName}</span></li>
-			<li>&nbsp;&nbsp; <span>${list.totalScore}</span></li>
-			<li>&nbsp;&nbsp; <span>${list.win}</span></li>
-		</c:forEach>
+          <li class="w3-black w3-xlarge w3-padding-32">카드뒤집기</li>
+          <c:forEach var="list" items="${firstList}">
+         	 <li class="w3-padding-16">${list.nicName} : ${list.highScore}(${list.winRate}%)</li>
+		  </c:forEach>
           <li class="w3-padding-16">
             <h2>최고 점수 :580</h2>
             <span class="w3-opacity">per month</span>
           </li>
-          <li class="w3-light-grey w3-padding-24">
+          <!-- <li class="w3-light-grey w3-padding-24">
             <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
+          </li> -->
         </ul>
       </div>
       
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-teal w3-xlarge w3-padding-32">카드뒤집기</li>
-          <li class="w3-padding-16">서경진 : 580</li>
-          <li class="w3-padding-16">오진혁 : 570</li>
-          <li class="w3-padding-16">장지해 : 530</li>
-          <li class="w3-padding-16">이은비 : 500</li>
-          <li class="w3-padding-16">
+          <li class="w3-teal w3-xlarge w3-padding-32">오델로</li>
+			<c:forEach var="list" items="${secondList}" end="5">
+		         			<li class="w3-padding-16">${list.nicName} : ${list.highScore}(${list.winRate}%)</li>
+<%-- 				<c:choose>
+					<c:when test="${list.nicName eq null}">
+							<li class="w3-padding-16">명예의 자리에 도전해보세요!</li>
+					</c:when>
+					<c:otherwise>
+		         			<li class="w3-padding-16">${list.nicName} : ${list.highScore}</li>
+					</c:otherwise>
+				</c:choose> --%>
+		  	</c:forEach>
+          	<li class="w3-padding-16">
             <h2>최고 점수 :580</h2>
             <span class="w3-opacity">per month</span>
           </li>
-          <li class="w3-light-grey w3-padding-24">
+         <!--  <li class="w3-light-grey w3-padding-24">
             <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
+          </li> -->
         </ul>
       </div>
-      
+     <!--  
       <div class="w3-third">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
@@ -73,7 +74,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
 </div>
   

@@ -9,6 +9,7 @@ public class RankVO {
 	private int highScore;
 	private String gameName;
 	private String nicName;
+	private float winRate;
 	
 	public String getEmail() {
 		return email;
@@ -59,5 +60,12 @@ public class RankVO {
 	public void setNicName(String nicName) {
 		this.nicName = nicName;
 	}
+	public float getWinRate() {
+		return winRate;
+	}
+	public void setWinRate(float winRate) {
+		this.winRate = winRate;
+	}
+
 
 }

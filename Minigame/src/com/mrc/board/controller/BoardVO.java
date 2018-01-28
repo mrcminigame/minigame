@@ -16,6 +16,7 @@ public class BoardVO {
 	private String ansUseYn;
 	private String nicName;
 	private String rowNumber;
+	private String flag;
 	private int start;
 	private int end;
 	
@@ -121,6 +122,12 @@ public class BoardVO {
 	}
 	public void setRowNumber(String rowNumber) {
 		this.rowNumber = rowNumber;
+	}
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 	
 

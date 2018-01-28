@@ -23,9 +23,9 @@ public class RankDAO implements RankService{
 		}
 	}
 
-	public List<RankVO> rankListData() {
+	public List<RankVO> rankListData(int gameNo) {
 		SqlSession session = ssf.openSession();
-		List<RankVO> list = session.selectList("rankListData");
+		List<RankVO> list = session.selectList("rankListData",gameNo);
 		session.close();
 		return list;
 	}

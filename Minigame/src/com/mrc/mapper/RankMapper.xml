@@ -3,19 +3,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mrc.mapper.RankMapper">
 	<!-- 뉴스 표시 -->
-	<select id="rankListData" resultType="RankVO">
-		SELECT 
-			R.EMAIL
-			,R.GAME_NO
-			,R.TOTAL_SCORE
-			,R.WIN
-			,R.LOSE
-			,R.HIGH_SCORE
-			,MI.NIC_NAME  as nicName
-			,GI.GAME_NAME as gameName
-		FROM RANK R, MEM_INFO MI, GAME_INFO GI
-		WHERE R.EMAIL = MI.EMAIL
-		AND R.GAME_NO = GI.GAME_NO
-		
+	<select id="rankListData" parameterType="int" resultType="RankVO">
+		SELECT * 
+        FROM(
+                  SELECT 
+                        R.EMAIL
+                        ,R.GAME_NO
+                        ,R.TOTAL_SCORE as totalScore
+                        ,R.WIN
+                        ,R.LOSE
+                        ,R.HIGH_SCORE as highScore
+                        ,MI.NIC_NAME  as nicName
+                        ,GI.GAME_NAME as gameName
+                        ,ROUND((R.WIN/(R.WIN+R.LOSE)*100),2) AS winRate
+                    FROM RANK R, MEM_INFO MI, GAME_INFO GI
+                    WHERE R.EMAIL = MI.EMAIL
+                    AND R.GAME_NO = GI.GAME_NO
+                    AND R.GAME_NO = #{gameNo}
+                    order by highScore DESC , winRate DESC
+        )
+      WHERE ROWNUM <![CDATA[ <]]> 6
 	</select>
 </mapper>

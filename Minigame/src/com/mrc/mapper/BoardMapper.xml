@@ -51,23 +51,21 @@
 	
 	<!--게시판등록  -->
 	<insert id="insertBoardInq" parameterType="BoardVO">
-	
 		INSERT INTO QA_BOARD(BOARD_NO,INQ_TITLE,INQ_CONTENT,INQ_REG_DT,INQ_MEM_EMAIL,VIEW_CNT,INQ_USE_YN)
 		VALUES(BOARD_SEQ.nextVal,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail},0,'Y')
 	</insert>
 	
 	<!--게시판삭제  -->
-	 <update id="deleteBoardInfo" parameterType="BoardVO"> 
+	 <update id="deleteBoard" parameterType="BoardVO"> 
 		UPDATE QA_BOARD
 		<choose>
-			<when test="1==1">
+			<when test="flag == 'inq'">
 				SET INQ_USE_YN = 'N' 
 			</when>
 			<otherwise>
 				SET ANS_USE_YN = 'N'
 			</otherwise>
 		</choose>
-		SET INQ_USE_YN = 'N'
 		WHERE BOARD_NO = #{boardNo}
 	</update>
 	

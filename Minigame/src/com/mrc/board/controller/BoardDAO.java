@@ -69,4 +69,11 @@ public class BoardDAO implements BoardService {
 		session.commit();
 		session.close();
 	}
+
+	public void deleteBoard(BoardVO boardVO) {
+		SqlSession session = ssf.openSession();
+		session.update("deleteBoard",boardVO);
+		session.commit();
+		session.close();
+	}
 }

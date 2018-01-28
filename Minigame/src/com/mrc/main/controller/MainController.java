@@ -43,8 +43,12 @@ public class MainController {
 			System.out.println("rank :" + ex.getMessage());
 		}
 		RankDAO rd = new RankDAO();
-		List<RankVO> list = rd.rankListData();
-		req.setAttribute("list", list);
+		int gameNo = 1;
+		List<RankVO> firstList = rd.rankListData(gameNo);
+		req.setAttribute("firstList", firstList);
+		gameNo = 2;
+		List<RankVO> secondList = rd.rankListData(gameNo);
+		req.setAttribute("secondList", secondList);
 		req.setAttribute("main_jsp", "../rank/rankList.jsp");
 		return "view/main/main.jsp";
 	}
