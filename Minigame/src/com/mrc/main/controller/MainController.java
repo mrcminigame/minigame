@@ -76,7 +76,7 @@ public class MainController {
 	      SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
 	      String today = sdf.format(date);
 	      
-	      bd.updateViewCnt();
+	    
 	      List<BoardVO> boardList = bd.boardListData(boardVO);
 	
 	      int totalpage= BoardDAO.boardTotalPage();
@@ -103,8 +103,8 @@ public class MainController {
 			System.out.println("boardDetail :" + ex.getMessage());
 		}
 		BoardDAO bd = new BoardDAO();
-		String boardNo = req.getParameter("boardNo");
-		
+		int boardNo = Integer.parseInt(req.getParameter("boardNo"));
+		bd.updateViewCnt(boardNo);
 		BoardVO detail = bd.boardDetailInfo(boardNo);
 		req.setAttribute("detail", detail);
 		req.setAttribute("main_jsp", "../board/boardDetail.jsp");

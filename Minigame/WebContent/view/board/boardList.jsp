@@ -46,7 +46,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		<tbody>
 			 <c:forEach var="result" items="${boardList}">
 				<tr>
-				  <td>${result.num}</td>
+				  <td>${result.rowNumber}</td>
 				  <td>${result.nicName}</td>
 				  <td><a href="BoardDetailView.do?boardNo=${result.boardNo}">${result.inqTitle}</a></td>
 				  <td>${result.viewCnt}</td>

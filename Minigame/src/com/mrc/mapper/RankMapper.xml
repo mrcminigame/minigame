@@ -16,5 +16,6 @@
 		FROM RANK R, MEM_INFO MI, GAME_INFO GI
 		WHERE R.EMAIL = MI.EMAIL
 		AND R.GAME_NO = GI.GAME_NO
+		
 	</select>
 </mapper>
