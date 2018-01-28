@@ -65,7 +65,13 @@ public class MemberDAO implements MemberService {
 				session.close();
 		}
 
-		
 		return vo;
+	}
+
+	public static void memberUpdate(MemberVO vo) {
+		SqlSession session = ssf.openSession();
+		session.update("memberUpdate", vo);
+		session.commit();
+		session.close();
 	}
 }

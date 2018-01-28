@@ -23,18 +23,27 @@ public class MainController {
 		req.setAttribute("main_jsp", "../main/default.jsp");
 		return "view/main/main.jsp";
 	}
+
 	@RequestMapping("memberJoin.do")
 	public String sign_up(HttpServletRequest req, HttpServletResponse res) {
 
 		req.setAttribute("main_jsp", "../member/memberJoin.jsp");
-			
+
 		return "view/main/main.jsp";
 	}
+
 	@RequestMapping("login.do")
 	public String login(HttpServletRequest req, HttpServletResponse res) {
 		req.setAttribute("main_jsp", "../member/login.jsp");
 		return "view/main/main.jsp";
 	}
+
+	@RequestMapping("myPage.do")
+	public String MyPage(HttpServletRequest req, HttpServletResponse res) {
+		req.setAttribute("main_jsp", "../member/MyPage.jsp");
+		return "view/main/main.jsp";
+	}
+
 	@RequestMapping("rank.do")
 	public String rank(HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -48,7 +57,7 @@ public class MainController {
 		req.setAttribute("main_jsp", "../rank/rankList.jsp");
 		return "view/main/main.jsp";
 	}
-	
+
 	@RequestMapping("board.do")
 	public String board(HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -56,45 +65,45 @@ public class MainController {
 		} catch (Exception ex) {
 			System.out.println("board :" + ex.getMessage());
 		}
-		  BoardDAO bd = new BoardDAO();
-		  BoardVO boardVO = new BoardVO();
-		
-		  String page = req.getParameter("page");
-		
-	      // request => 기존요청값 + 추가 (setAttribute())
-	      if(page==null)
-	         page="1";
-	      int curpage = Integer.parseInt(page);
-	      int rowSize=10;
-	      int start = (rowSize*curpage)-(rowSize-1);
-	      int end = rowSize*curpage;
-	      
-	      boardVO.setStart(start);
-	      boardVO.setEnd(end);
-	      
-	      Date date = new Date();
-	      SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-	      String today = sdf.format(date);
-	      
-	      bd.updateViewCnt();
-	      List<BoardVO> boardList = bd.boardListData(boardVO);
-	
-	      int totalpage= BoardDAO.boardTotalPage();
-	      
-	      req.setAttribute("boardList", boardList);
-	      req.setAttribute("curpage", curpage);
-	      req.setAttribute("totalpage", totalpage);
-	      req.setAttribute("today", today);
-	      req.setAttribute("main_jsp", "../board/boardList.jsp");
+		BoardDAO bd = new BoardDAO();
+		BoardVO boardVO = new BoardVO();
+
+		String page = req.getParameter("page");
+
+		// request => 기존요청값 + 추가 (setAttribute())
+		if (page == null)
+			page = "1";
+		int curpage = Integer.parseInt(page);
+		int rowSize = 10;
+		int start = (rowSize * curpage) - (rowSize - 1);
+		int end = rowSize * curpage;
+
+		boardVO.setStart(start);
+		boardVO.setEnd(end);
+
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(date);
+
+		bd.updateViewCnt();
+		List<BoardVO> boardList = bd.boardListData(boardVO);
+
+		int totalpage = BoardDAO.boardTotalPage();
+
+		req.setAttribute("boardList", boardList);
+		req.setAttribute("curpage", curpage);
+		req.setAttribute("totalpage", totalpage);
+		req.setAttribute("today", today);
+		req.setAttribute("main_jsp", "../board/boardList.jsp");
 		return "view/main/main.jsp";
 	}
-	
+
 	@RequestMapping("BoardRegistView.do")
 	public String BoardRegistView(HttpServletRequest req, HttpServletResponse res) {
 		req.setAttribute("main_jsp", "../board/boardRegist.jsp");
 		return "view/main/main.jsp";
 	}
-	
+
 	@RequestMapping("BoardDetailView.do")
 	public String BoardDetailView(HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -104,11 +113,11 @@ public class MainController {
 		}
 		BoardDAO bd = new BoardDAO();
 		String boardNo = req.getParameter("boardNo");
-		
+
 		BoardVO detail = bd.boardDetailInfo(boardNo);
 		req.setAttribute("detail", detail);
 		req.setAttribute("main_jsp", "../board/boardDetail.jsp");
 		return "view/main/main.jsp";
 	}
-	
+
 }

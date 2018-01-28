@@ -16,7 +16,8 @@
 		,DOT_DT /*삭제일*/
 		,MEM_STAT_CODE
 		FROM MEM_INFO
-		WHERE MEM_STAT_CODE = '0001'
+		WHERE
+		MEM_STAT_CODE = '0001'
 	</select>
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT count(*)
@@ -29,14 +30,16 @@
 		WHERE nic_name = #{nic_Name}
 	</select>
 	<select id="passwordCheck" parameterType="String" resultType="MemberVO">
-		SELECT email,pwd,nic_name,phone,mem_grd_code,reg_dt,mod_dt,use_yn FROM MEM_INFO
+		SELECT email,pwd,nic_name,phone,mem_grd_code,reg_dt,mod_dt,use_yn FROM
+		MEM_INFO
 		WHERE email = #{email}
 	</select>
 	<insert id="inserMemberInfo" parameterType="MemberVO">
 		insert into mem_info
 		(
 		email, pwd, nic_name, phone, mem_Grd_Code, reg_Dt, mod_Dt, use_YN
-		) values
+		)
+		values
 		(
 		#{email},#{pwd},#{nic_Name},#{phone},'001',sysdate,sysdate,'Y'
 		)
@@ -48,4 +51,12 @@
 		parameterType="NewsReplyVO"> UPDATE news_reply SET msg=#{msg} WHERE no=#{no} 
 		</update> <delete id="replyDelete" parameterType="int"> DELETE FROM news_reply 
 		WHERE no=#{no} </delete> -->
+	<update id="memberUpdate" parameterType="MemberVO">
+		UPDATE mem_info
+		SET
+		nic_Name =
+		#{nic_Name},email=#{email},pwd=#{pwd},phone=#{phone}
+		WHERE email =
+		#{email} and pwd = #{pwd}
+	</update>
 </mapper>

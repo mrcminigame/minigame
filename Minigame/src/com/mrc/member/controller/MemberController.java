@@ -24,6 +24,33 @@ public class MemberController {
 	 * 
 	 * }
 	 */
+	//memberUpdate.do
+	@RequestMapping("memberUpdate.do")
+	public String memberUpdate(HttpServletRequest req,HttpServletResponse res) {
+		HttpSession session=req.getSession();
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+			System.out.println("memberJoin :" + ex.getMessage());
+		}
+		
+		String nic_Name=req.getParameter("nic_Name");
+		String email = req.getParameter("email");
+		String pwd = req.getParameter("changepwd");
+		String phone=req.getParameter("phone");
+
+		MemberVO vo=new MemberVO();
+		vo.setEmail(email);
+		vo.setPwd(pwd);
+		vo.setNic_Name(nic_Name);
+		vo.setPhone(phone);
+		
+	
+		req.setAttribute("vo", vo);
+		MemberDAO.memberUpdate(vo);
+		session.invalidate();
+		return "view/main/main.jsp";
+	}
 	@RequestMapping("loginOk.do")
 	public String memberlogin(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
