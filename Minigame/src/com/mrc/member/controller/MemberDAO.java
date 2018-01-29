@@ -48,7 +48,7 @@ public class MemberDAO implements MemberService {
 
 		String check = Integer.toString(session.selectOne("nic_NameCheck", nic_Name));
 		session.close();
-		System.out.println("check : "+check);
+		System.out.println("check : " + check);
 		return check;
 	}
 
@@ -92,6 +92,25 @@ public class MemberDAO implements MemberService {
 			if (session != null)
 				session.close();
 		}
+
+		return list;
+	}
+
+	public static List<MemberVO> searchResult(String searchKey) {
+		// TODO Auto-generated method stub
+		List<MemberVO> list = new ArrayList();
+		System.out.println("DAO¿¡¼­ key°ª"+searchKey);
+		SqlSession session = ssf.openSession();
+		try {
+			list = session.selectList("searchResult", searchKey);
+		} catch (Exception ex) {
+			System.out.println("searchResult " + ex.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+			System.out.println(list.get(0).getEmail());
+		
 
 		return list;
 	}

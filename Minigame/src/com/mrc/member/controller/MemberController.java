@@ -143,15 +143,29 @@ public class MemberController {
 		} catch (Exception ex) {
 			System.out.println("admin :" + ex.getMessage());
 		}
-		List<MemberVO> list = new ArrayList();
-		list = MemberDAO.getMemberList();
+		List<MemberVO> list = MemberDAO.getMemberList();
 	
 
 		req.setAttribute("list", list);
 		req.setAttribute("main_jsp", "../member/admin.jsp");
+		
 		return "view/main/main.jsp";
 	}
-
+	@RequestMapping("searchResult.do")
+	public String searchResult(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+			System.out.println("searchResult :" + ex.getMessage());
+		}
+		String searchKey = req.getParameter("searchKey");
+		System.out.println(searchKey);
+		
+		List<MemberVO> list = MemberDAO.searchResult(searchKey);
+		req.setAttribute("list", list);
+		req.setAttribute("main_jsp", "../admin/searchResult.jsp");
+		return "view/main/main.jsp";
+	}
 	@RequestMapping("memberInsert.do")
 	public String memberJoin(HttpServletRequest req, HttpServletResponse res) {
 		try {

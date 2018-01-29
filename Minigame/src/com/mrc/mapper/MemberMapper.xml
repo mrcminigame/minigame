@@ -61,4 +61,7 @@
 	<select id = "getMemberList" resultType="MemberVO">
 		SELECT * from MEM_INFO
 	</select>
+	<select id="searchResult" resultType="MemberVO" parameterType="String">
+		select * from MEM_INFO where email like '%'||#{searchKey}||'%'
+	</select>
 </mapper>
