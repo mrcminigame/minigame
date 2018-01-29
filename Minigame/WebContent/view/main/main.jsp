@@ -22,8 +22,7 @@ body, h1, h2, h3, h4, h5, h6 {
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
 	<!-- Side Navigation bar -->
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
-		style="z-index:3;width:200px;" id="mySidebar">
-	<br>
+		style="z-index:3;width:200px;" id="mySidebar"> <br>
 	<div class="w3-container">
 		<!--   <img src="images/avatar.jpg" style="width:45%;" class="w3-round"><br><br> -->
 		<c:if test="${sessionScope.email!=null }">
@@ -53,13 +52,18 @@ body, h1, h2, h3, h4, h5, h6 {
 			<a href="login.do" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-envelope fa-fw w3-margin-right"></i>Login</a>
 		</c:if>
+		<c:if test="${sessionScope.email!=null && sessionScope.mem_Grd_Code eq '002'}">
+			<a href="admin.do" class="w3-bar-item w3-button w3-padding"><i
+				class="fa fa-envelope fa-fw w3-margin-right"></i>Admin</a>
+		</c:if>
 		<c:if test="${sessionScope.email!=null }">
-			<a href="mypage.do" class="w3-bar-item w3-button w3-padding"><i
+			<a href="myPage.do" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-envelope fa-fw w3-margin-right"></i>MyPage</a>
 			<a href="logout.do" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
 
 		</c:if>
+
 	</div>
 	</nav>
 

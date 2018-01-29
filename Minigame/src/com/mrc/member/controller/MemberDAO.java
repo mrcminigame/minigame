@@ -3,7 +3,6 @@ package com.mrc.member.controller;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -49,12 +48,13 @@ public class MemberDAO implements MemberService {
 
 		String check = Integer.toString(session.selectOne("nic_NameCheck", nic_Name));
 		session.close();
-		System.out.println(check);
+		System.out.println("check : "+check);
 		return check;
 	}
 
 	public static MemberVO passwordCheck(String email) {
 		MemberVO vo = new MemberVO();
+
 		SqlSession session = ssf.openSession();
 		try {
 			vo = session.selectOne("passwordCheck", email);
@@ -70,8 +70,29 @@ public class MemberDAO implements MemberService {
 
 	public static void memberUpdate(MemberVO vo) {
 		SqlSession session = ssf.openSession();
+		System.out.println("회원수정");
+		System.out.println(vo.getEmail());
+		System.out.println(vo.getNic_Name());
+		System.out.println(vo.getPwd());
+		System.out.println(vo.getPhone());
 		session.update("memberUpdate", vo);
 		session.commit();
 		session.close();
+	}
+
+	public static List<MemberVO> getMemberList() {
+		// TODO Auto-generated method stub
+		List<MemberVO> list = new ArrayList();
+		SqlSession session = ssf.openSession();
+		try {
+			list = session.selectList("getMemberList");
+		} catch (Exception ex) {
+			System.out.println("getMemberList " + ex.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		return list;
 	}
 }

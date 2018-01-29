@@ -54,9 +54,11 @@
 	<update id="memberUpdate" parameterType="MemberVO">
 		UPDATE mem_info
 		SET
-		nic_Name =
-		#{nic_Name},email=#{email},pwd=#{pwd},phone=#{phone}
-		WHERE email =
-		#{email} and pwd = #{pwd}
+		nic_Name =#{nic_Name},email=#{email},pwd=#{pwd},phone=#{phone}
+		WHERE
+		email = #{email}
 	</update>
+	<select id = "getMemberList" resultType="MemberVO">
+		SELECT * from MEM_INFO
+	</select>
 </mapper>

@@ -2,6 +2,7 @@
 package com.mrc.main.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 import com.mrc.member.controller.MemberDAO;
+import com.mrc.member.controller.MemberVO;
 import com.mrc.rank.controller.RankDAO;
 import com.mrc.rank.controller.RankVO;
 
@@ -31,6 +33,14 @@ public class MainController {
 
 		return "view/main/main.jsp";
 	}
+	@RequestMapping("adminCheck.do")
+	public String adminCheck(HttpServletRequest req, HttpServletResponse res) {
+
+
+		req.setAttribute("main_jsp", "../member/adminCheck.jsp");
+		
+		return "view/main/main.jsp";
+	}
 
 	@RequestMapping("login.do")
 	public String login(HttpServletRequest req, HttpServletResponse res) {
@@ -40,7 +50,7 @@ public class MainController {
 
 	@RequestMapping("myPage.do")
 	public String MyPage(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("main_jsp", "../member/MyPage.jsp");
+		req.setAttribute("main_jsp", "../member/myPage.jsp");
 		return "view/main/main.jsp";
 	}
 
