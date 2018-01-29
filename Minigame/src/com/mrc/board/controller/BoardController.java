@@ -4,6 +4,8 @@ package com.mrc.board.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 
@@ -16,15 +18,33 @@ public class BoardController {
 			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception ex) {
 		}
-	//	HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 		String inqTitle = req.getParameter("inqTitle");
 		String inqContent = req.getParameter("inqContent");
 		BoardVO boardVO = new BoardVO();
 		boardVO.setInqTitle(inqTitle);
 		boardVO.setInqContent(inqContent);
-		boardVO.setInqMemEmail("hong@gil.dong"); //TODO:로그인 계정받아오기
-		
+		String email = (String)session.getAttribute("email");
+		boardVO.setInqMemEmail(email); 
+				
 		bs.insertBoardInq(boardVO);
+		return "board.do";
+	}
+	@RequestMapping("registBoardAns.do")
+	public String registBoardAns(HttpServletRequest req, HttpServletResponse res) {
+		BoardDAO bs = new BoardDAO();
+		try {
+			req.setCharacterEncoding("EUC-KR");
+		} catch (Exception ex) {
+		}
+		HttpSession session = req.getSession();
+		String email = (String)session.getAttribute("email");
+		
+		BoardVO boardVO = new BoardVO();
+		boardVO.setAnsContent((req.getParameter("ansContent")));
+		boardVO.setBoardNo(Integer.parseInt(req.getParameter("boardNum")));
+		boardVO.setAnsMemEmail(email);
+		bs.insertBoardAns(boardVO);
 		return "board.do";
 	}
 	
@@ -41,7 +61,8 @@ public class BoardController {
 		String flag = req.getParameter("flag");
 		BoardVO boardVO = new BoardVO();
 		boardVO.setBoardNo(boardNo);
-		boardVO.setFlag("inq");
+		//boardVO.setFlag("inq");
+		boardVO.setFlag("ans");
 		
 		bs.deleteBoard(boardVO);
 		return "board.do";

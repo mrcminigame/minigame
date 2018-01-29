@@ -13,8 +13,10 @@ import com.mrc.board.controller.BoardDAO;
 import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
+
 import com.mrc.member.controller.MemberDAO;
 import com.mrc.member.controller.MemberVO;
+
 import com.mrc.rank.controller.RankDAO;
 import com.mrc.rank.controller.RankVO;
 
@@ -64,6 +66,8 @@ public class MainController {
 		RankDAO rd = new RankDAO();
 		int gameNo = 1;
 		List<RankVO> firstList = rd.rankListData(gameNo);
+		req.setAttribute("highScore", firstList.get(0).getHighScore());	
+		req.setAttribute("gameName", firstList.get(0).getGameName());	
 		req.setAttribute("firstList", firstList);
 		gameNo = 2;
 		List<RankVO> secondList = rd.rankListData(gameNo);
