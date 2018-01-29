@@ -19,22 +19,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:250px">
  <div class="w3-container w3-padding-large " >  
     <h4 id="contact"><b>문의사항</b></h4>
-   <!--  <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p>email@email.com</p>
-      </div>
-      <div class="w3-third w3-teal">
-        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p>Chicago, US</p>
-      </div>
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p>512312311</p>
-      </div>
-    </div> -->
+  
     <hr class="w3-opacity">
- 	<div class = "w3-right-align"><a href="BoardRegistView.do" id="regBtn" class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">글 쓰기</a></div>   
+    <c:if test="${sessionScope.email!=null }">
+	 	<div class = "w3-right-align"><a href="BoardRegistView.do" id="regBtn" class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">글 쓰기</a></div>   
+	</c:if>
     <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
 		<tr class="w3-grey">
 		  <th>번호</th>
@@ -48,7 +37,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 				<tr>
 				  <td>${result.rowNumber}</td>
 				  <td>${result.nicName}</td>
-				  <td><a href="BoardDetailView.do?boardNo=${result.boardNo}">${result.inqTitle}</a></td>
+				  <td>
+				  	<c:choose>
+				    	<c:when test="${sessionScope.email!=null }">
+							<a href="BoardDetailView.do?boardNo=${result.boardNo}">${result.inqTitle}</a>
+				 	 	</c:when>
+				 	 	<c:otherwise>
+				 	 		${result.inqTitle}
+				 	 	</c:otherwise>
+			 	 	</c:choose>
+				  </td>
 				  <td>${result.viewCnt}</td>
 				  <td>${result.inqRegDt}</td>
 				</tr>
@@ -62,7 +60,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <c:set var="num" value="${num<=0?1:num*10}" />
             <c:forEach var="i" begin="${num}" end="${num==1?num+8:num+9}">
                <c:choose>
-                  <c:when test="${i > totalpage }"></c:when>
+                  <c:when test="${i > totalpage-1 }"></c:when>
                   <c:when test="${i==curpage}">
                      <li class="active"><a href="board.do?page=${i}">${i}</a></li>
                   </c:when>

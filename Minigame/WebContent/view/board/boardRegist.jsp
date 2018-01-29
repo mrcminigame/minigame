@@ -47,9 +47,25 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+	
 	$( "#regBoardBtn" ).click(function() {
-		$("#regFrm").submit();
+		if(valChk()){
+			$("#regFrm").submit();
+		}
 	});
 });
+
+
+function valChk(){
+	if($('#inqTitle').val() == null){
+		alert("제목을 입력해주세요.");
+		return false;
+	}
+	if($('#inqContent').val() == null){
+		alert("내용을 입력해주세요.");
+		return false;
+	}
+	return true;
+}
 </script>
 </html>

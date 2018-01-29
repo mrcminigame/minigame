@@ -40,10 +40,10 @@ body, h1, h2, h3, h4, h5, h6 {
 	</div>
 	<div class="w3-bar-block">
 		<a href="main.do" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-home fa-fw w3-margin-right"></i>Main</a> <a
-			href="rank.do" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa fa-bars fa-fw w3-margin-right"></i>Rank</a> <a href="board.do"
-			class="w3-bar-item w3-button w3-padding"><i
+			class="fa fa-home fa-fw w3-margin-right"></i>Main</a>
+	    <a href="rank.do" class="w3-bar-item w3-button w3-padding"><i
+			class="fa fa fa-bars fa-fw w3-margin-right"></i>Rank</a> 
+		<a href="board.do"	class="w3-bar-item w3-button w3-padding"><i
 			class="fa fa-envelope fa-fw w3-margin-right"></i>Q/A</a>
 
 		<c:if test="${sessionScope.email==null }">
