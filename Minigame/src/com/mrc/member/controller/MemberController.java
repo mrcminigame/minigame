@@ -46,10 +46,16 @@ public class MemberController {
 		MemberVO vo=new MemberVO();
 		vo.setEmail(email);
 		System.out.println("변경요청한 비밀번호 : "+changepwd);
-		if(changepwd == null)
+		if(changepwd.equals(""))
+		{
 			vo.setPwd(pwd);
-		else if(changepwd != null)
+			System.out.println("바꿀 비밀번호 입력 하지 않았음");
+		}			
+		else
+		{
 			vo.setPwd(changepwd);
+			System.out.println("바꿀 비밀번호 입력 되었음");
+		}			
 		vo.setNic_Name(nic_Name);
 		vo.setPhone(phone);
 		
