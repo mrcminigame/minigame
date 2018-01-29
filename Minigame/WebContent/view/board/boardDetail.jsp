@@ -31,8 +31,9 @@
 </form>
 <p>
 <div class= "w3-right-align">
-	<span>작성자 : 이은비 </span>
-	<span>등록일: 2018.01.26</span>
+	<span>작성자 : ${detail.inqMemEmail}( ${detail.nicName}) </span>
+	<p>
+	<span>등록일: ${detail.inqRegDt}</span>
 </div>
 <br>
 <p>      
@@ -49,22 +50,27 @@
 	<textarea class="w3-input w3-border" style="resize:none" id="inqContent" name="inqContent" readonly="readonly">${detail.inqContent}</textarea>
 </p>
 <hr>
-<p>      
+<form id="ansRegFrm" action="registBoardAns.do" method="post">    
+<p> 
 	<label class="w3-text-grey">답글</label>
-	<textarea class="w3-input w3-border" style="resize:none" id="ansContent" name="ansContent">
+	<input type ="hidden" name="boardNum" value="${param.boardNo}"/>
 		<c:choose>
 			<c:when test="${detail.ansUseYn eq 'Y'}">
-				${detail.ansContent}
+				<textarea class="w3-input w3-border" style="resize:none" disabled="disabled">	${detail.ansContent}</textarea>
 			</c:when>
 			<c:when test="${detail.ansUseYn eq 'N'}">
-				삭제된 글입니다.
+				<textarea class="w3-input w3-border" style="resize:none" disabled="disabled">	삭제된 댓글입니다.</textarea>
 			</c:when>
+			<c:otherwise>
+				<textarea class="w3-input w3-border" style="resize:none" id="ansContent" name="ansContent">	</textarea>
+			</c:otherwise>
 		</c:choose>
-	</textarea>
-	<div class = "w3-right-align">
-		 <button type="button" id="delBoardAns" class="w3-btn w3-red " style="width:120px">댓글삭제 &nbsp;</button>
-	 </div>
 
+</form>
+	<div class = "w3-right-align">
+		 <button type="button" id="regBoardAns" class="w3-btn w3-red " style="width:120px">댓글등록 &nbsp;</button>
+		 <button type="button" id="delBoardAns" class="w3-btn w3-red " style="width:120px">댓글삭제 &nbsp;</button><!--내용있을때만 삭제가능 -->
+	 </div>
 <br>
   <p>
   <button type="button" id="listBtn" class="w3-btn w3-padding w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
@@ -87,6 +93,9 @@
 				$("#delFrm").submit();
 			}
 		});	
+		$( "#regBoardAns" ).click(function() {
+			$("#ansRegFrm").submit();
+		});
 	});
 </script>
 </html>

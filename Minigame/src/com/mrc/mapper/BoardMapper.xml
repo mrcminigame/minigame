@@ -42,10 +42,13 @@
 			,TO_CHAR(INQ_REG_DT,'YYYY-MM-DD') as inqRegDt
 			,ANS_CONTENT as ansContent
 			,ANS_MEM_EMAIL as ansMemEmail
+			,INQ_MEM_EMAIL as inqMemEmail
 			,TO_CHAR(ANS_REG_DT,'YYYY-MM-DD') as ansRegDt
 			,ANS_USE_YN as ansUseYn
-		FROM QA_BOARD
-		WHERE BOARD_NO = #{boardNo}
+			,MI.NIC_NAME  AS nicName
+		FROM QA_BOARD QB, 	MEM_INFO MI
+		WHERE QB.INQ_MEM_EMAIL = MI.EMAIL
+		AND BOARD_NO = #{boardNo}
 		ORDER BY ANS_REG_DT DESC
 	</select>
 	
@@ -55,24 +58,38 @@
 		VALUES(BOARD_SEQ.nextVal,#{inqTitle},#{inqContent},sysdate,#{inqMemEmail},0,'Y')
 	</insert>
 	
+	<!--게시판등록  -->
+	<insert id="insertBoardAns" parameterType="BoardVO">
+		UPDATE QA_BOARD
+		SET 
+			ANS_CONTENT = #{ansContent}
+			,ANS_MEM_EMAIL = #{ansMemEmail}
+			,ANS_REG_DT = SYSDATE
+			,ANS_USE_YN  ='Y'
+		WHERE BOARD_NO = #{boardNo}
+	</insert>
+	
 	<!--게시판삭제  -->
 	 <update id="deleteBoard" parameterType="BoardVO"> 
 		UPDATE QA_BOARD
+		SET
 		<choose>
 			<when test="flag == 'inq'">
-				SET INQ_USE_YN = 'N' 
+				 INQ_USE_YN = 'N' 
+					,INQ_DEL_DT = SYSDATE
 			</when>
 			<otherwise>
-				SET ANS_USE_YN = 'N'
+				 ANS_USE_YN = 'N'
+				 ,ANS_DEL_DT = SYSDATE
 			</otherwise>
 		</choose>
 		WHERE BOARD_NO = #{boardNo}
 	</update>
 	
-	<update id="updateViewCnt" parameterType="int"> 
+	<update id="updateViewCnt" parameterType="int">
 		UPDATE QA_BOARD
-		SET VIEW_CNT = ((SELECT VIEW_CNT FROM QA_BOARD WHERE BOARD_NO = #{BOARD_NO}) +1)
-		WHERE BOARD_NO = #{BOARD_NO}
+		SET
+		    VIEW_CNT = (select ((SELECT VIEW_CNT FROM QA_BOARD WHERE BOARD_NO = #{boardNo}) +1) from dual) 
+		WHERE BOARD_NO = #{boardNo}
 	</update> 
-	
 </mapper>

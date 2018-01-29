@@ -50,8 +50,6 @@ $(document).ready(function() {
 	$( "#regBoardBtn" ).click(function() {
 		$("#regFrm").submit();
 	});
-	
-	
 });
 </script>
 </html>

@@ -21,23 +21,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-black w3-xlarge w3-padding-32">카드뒤집기</li>
-          <c:forEach var="list" items="${firstList}">
-         	 <li class="w3-padding-16">${list.nicName} : ${list.highScore}(${list.winRate}%)</li>
+          <li class="w3-black w3-xlarge w3-padding-32">${gameName}</li>
+          <c:forEach var="list" items="${firstList}" varStatus="i">
+         	${i.count}위
+         	 <li class="w3-padding-16">이름: ${list.nicName} 
+         	 	<P>최고점수: ${list.highScore}
+         	 	<p>승률 : (${list.winRate}%)</li>
 		  </c:forEach>
           <li class="w3-padding-16">
-            <h2>최고 점수 :580</h2>
-            <span class="w3-opacity">per month</span>
+            <h2>최고 점수 :${highScore}</h2>
           </li>
-          <!-- <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li> -->
+         
         </ul>
       </div>
       
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-teal w3-xlarge w3-padding-32">오델로</li>
+          <li class="w3-teal w3-xlarge w3-padding-32">카드뒤집기</li>
 			<c:forEach var="list" items="${secondList}" end="5">
 		         			<li class="w3-padding-16">${list.nicName} : ${list.highScore}(${list.winRate}%)</li>
 <%-- 				<c:choose>
@@ -51,7 +51,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		  	</c:forEach>
           	<li class="w3-padding-16">
             <h2>최고 점수 :580</h2>
-            <span class="w3-opacity">per month</span>
           </li>
          <!--  <li class="w3-light-grey w3-padding-24">
             <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>

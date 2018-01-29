@@ -34,6 +34,12 @@ public class BoardDAO implements BoardService {
 		session.insert("insertBoardInq",boardVO);
 		session.commit();
 		session.close();
+	}
+	public void insertBoardAns(BoardVO boardVO) {
+		SqlSession session = ssf.openSession();
+		session.insert("insertBoardAns",boardVO);
+		session.commit();
+		session.close();
 		
 	}
 
@@ -76,4 +82,6 @@ public class BoardDAO implements BoardService {
 		session.commit();
 		session.close();
 	}
+
+	
 }
