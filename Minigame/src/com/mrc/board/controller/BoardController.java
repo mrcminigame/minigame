@@ -39,13 +39,14 @@ public class BoardController {
 		}
 		HttpSession session = req.getSession();
 		String email = (String)session.getAttribute("email");
-		
+		int boardNo =Integer.parseInt(req.getParameter("boardNum"));
 		BoardVO boardVO = new BoardVO();
 		boardVO.setAnsContent((req.getParameter("ansContent")));
-		boardVO.setBoardNo(Integer.parseInt(req.getParameter("boardNum")));
+		boardVO.setBoardNo(boardNo);
 		boardVO.setAnsMemEmail(email);
 		bs.insertBoardAns(boardVO);
-		return "board.do";
+		/*return "board.do";*/
+		return "BoardDetailView.do?boardNo="+boardNo;
 	}
 	
 	
@@ -55,8 +56,8 @@ public class BoardController {
 		try {
 			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception ex) {
+			
 		}
-
 		int boardNo = Integer.parseInt(req.getParameter("boardNo"));
 		String flag = req.getParameter("flag");
 		BoardVO boardVO = new BoardVO();
@@ -65,6 +66,10 @@ public class BoardController {
 		boardVO.setFlag("ans");
 		
 		bs.deleteBoard(boardVO);
-		return "board.do";
+		if(flag.equals("ans")){
+			return "BoardDetailView.do?boardNo="+boardNo;
+		}else{
+			return "board.do";
+		}
 	}
 }

@@ -59,33 +59,39 @@
 			<c:when test="${detail.ansUseYn eq 'Y'}">
 				<textarea class="w3-input w3-border" style="resize:none" disabled="disabled">	${detail.ansContent}</textarea>
 			</c:when>
-			<c:when test="${detail.ansUseYn eq 'N'}">
+			<%-- <c:when test="${detail.ansUseYn eq 'N'}">
 				<textarea class="w3-input w3-border" style="resize:none" disabled="disabled">	삭제된 댓글입니다.</textarea>
-			</c:when>
+			</c:when> --%>
 			<c:otherwise>
 				<textarea class="w3-input w3-border" style="resize:none" id="ansContent" name="ansContent">	</textarea>
 			</c:otherwise>
 		</c:choose>
 		<div class = "w3-right-align">
 		 <button type="button" id="regBoardAns" class="w3-btn  w3-small w3-white w3-border w3-border-black w3-text-black w3-round-large w3-padding-small" style="width:120px">댓글 등록 &nbsp;</button>
-		 <button type="button" id="delBoardAns" class="w3-btn  w3-small w3-white w3-border w3-border-red w3-text-red w3-round-large w3-padding-small" style="width:120px">댓글 삭제 &nbsp;</button><!--내용있을때만 삭제가능 -->
+		 <c:if test="${detail.ansUseYn eq 'Y' && sessionScope.mem_Grd_Code eq '002'}">
+		 	<button type="button" id="delBoardAns" class="w3-btn  w3-small w3-white w3-border w3-border-red w3-text-red w3-round-large w3-padding-small" style="width:120px">댓글 삭제 &nbsp;</button>
+		 </c:if>
 		</div>
 </form>
 
 <br>
   <p>
   <button type="button" id="listBtn" class="w3-button w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
-  <button type="button" id="delBoardInq" class="w3-button w3-red" style="width:120px">삭제 </button>
+   <c:if test="${sessionScope.mem_Grd_Code eq '002'}">
+	 <button type="button" id="delBoardInq" class="w3-button w3-red" style="width:120px">삭제 </button>
+   </c:if>
  </div>
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$( "#delBoardInq" ).click(function() {
-			if(confirm('삭제하시겠습니까?')){
-				$("#flag").val('inq');
-				debugger
-				$("#delFrm").submit();
+			if(valChk()){
+				if(confirm('삭제하시겠습니까?')){
+					$("#flag").val('inq');
+					$("#delFrm").submit();
+				}	
 			}
+			
 		});
 		$( "#delBoardAns" ).click(function() {
 			if(confirm('삭제하시겠습니까?')){
@@ -93,9 +99,19 @@
 				$("#delFrm").submit();
 			}
 		});	
+		
 		$( "#regBoardAns" ).click(function() {
-			$("#ansRegFrm").submit();
+			if(confirm('등록하시겠습니까?')){
+				$("#ansRegFrm").submit();
+			}
 		});
 	});
+	function valChk(){
+		if($("#ansContent").val() == null || $("#ansContent").val() == '' ){
+			alert("댓글을 입력해주세요.");
+			return false;
+		}
+		return true;
+	}
 </script>
 </html>
