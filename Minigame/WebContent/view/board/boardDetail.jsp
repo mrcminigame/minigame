@@ -52,6 +52,7 @@
 <hr>
 <form id="ansRegFrm" action="registBoardAns.do" method="post">    
 <p> 
+	
 	<label class="w3-text-grey">답글</label>
 	<input type ="hidden" name="boardNum" value="${param.boardNo}"/>
 		<c:choose>
@@ -65,17 +66,16 @@
 				<textarea class="w3-input w3-border" style="resize:none" id="ansContent" name="ansContent">	</textarea>
 			</c:otherwise>
 		</c:choose>
-
+		<div class = "w3-right-align">
+		 <button type="button" id="regBoardAns" class="w3-btn  w3-small w3-white w3-border w3-border-black w3-text-black w3-round-large w3-padding-small" style="width:120px">댓글 등록 &nbsp;</button>
+		 <button type="button" id="delBoardAns" class="w3-btn  w3-small w3-white w3-border w3-border-red w3-text-red w3-round-large w3-padding-small" style="width:120px">댓글 삭제 &nbsp;</button><!--내용있을때만 삭제가능 -->
+		</div>
 </form>
-	<div class = "w3-right-align">
-		 <button type="button" id="regBoardAns" class="w3-btn w3-red " style="width:120px">댓글등록 &nbsp;</button>
-		 <button type="button" id="delBoardAns" class="w3-btn w3-red " style="width:120px">댓글삭제 &nbsp;</button><!--내용있을때만 삭제가능 -->
-	 </div>
+
 <br>
   <p>
-  <button type="button" id="listBtn" class="w3-btn w3-padding w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
-  <button type="button" id="delBoardInq" class="w3-btn w3-padding w3-teal" style="width:120px">삭제 &nbsp; &#10095;</button>
-
+  <button type="button" id="listBtn" class="w3-button w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
+  <button type="button" id="delBoardInq" class="w3-button w3-red" style="width:120px">삭제 </button>
  </div>
 </body>
 <script type="text/javascript">

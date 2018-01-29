@@ -12,7 +12,7 @@
             FROM (
 
               		SELECT 
-              			ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS  rowNumber 	
+              			ROW_NUMBER() OVER (ORDER BY BOARD_NO) AS  rowNumber 	
              	 		,BOARD_NO as boardNo
 						,INQ_TITLE as inqTitle
 						,VIEW_CNT AS viewCnt

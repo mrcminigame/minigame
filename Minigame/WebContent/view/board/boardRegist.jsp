@@ -39,7 +39,7 @@
 	<textarea class="w3-input w3-border" style="resize:none" id="inqContent" name="inqContent" ></textarea>
 </p>
 <br>
-  <p><button type="button" id="regBoardBtn" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; &#10095;</button></p>
+  <p><button type="button" id="regBoardBtn" class="w3-btn w3-padding w3-teal" style="width:120px">µî·Ï</button></p>
 </form>
  </div>
 </body>

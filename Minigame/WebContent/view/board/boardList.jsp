@@ -33,8 +33,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p>512312311</p>
       </div>
     </div> -->
- 	<span><a href="BoardRegistView.do" id="regBtn" class="w3-btn w3-white w3-border w3-border-green w3-round-xlarge">등록</a></span>   
     <hr class="w3-opacity">
+ 	<div class = "w3-right-align"><a href="BoardRegistView.do" id="regBtn" class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">글 쓰기</a></div>   
     <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
 		<tr class="w3-grey">
 		  <th>번호</th>

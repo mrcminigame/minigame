@@ -66,6 +66,11 @@ public class MainController {
 		RankDAO rd = new RankDAO();
 		int gameNo = 1;
 		List<RankVO> firstList = rd.rankListData(gameNo);
+		if(firstList.size()<6){
+			for(int i=0; i<6-firstList.size(); i++){
+				firstList.add(null);	
+			}
+		}
 		req.setAttribute("highScore", firstList.get(0).getHighScore());	
 		req.setAttribute("gameName", firstList.get(0).getGameName());	
 		req.setAttribute("firstList", firstList);

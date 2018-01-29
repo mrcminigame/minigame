@@ -40,17 +40,17 @@ body, h1, h2, h3, h4, h5, h6 {
 	</div>
 	<div class="w3-bar-block">
 		<a href="main.do" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-th-large fa-fw w3-margin-right"></i>Main</a> <a
+			class="fa fa-home fa-fw w3-margin-right"></i>Main</a> <a
 			href="rank.do" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-user fa-fw w3-margin-right"></i>Rank</a> <a href="board.do"
+			class="fa fa fa-bars fa-fw w3-margin-right"></i>Rank</a> <a href="board.do"
 			class="w3-bar-item w3-button w3-padding"><i
 			class="fa fa-envelope fa-fw w3-margin-right"></i>Q/A</a>
 
 		<c:if test="${sessionScope.email==null }">
 			<a href="memberJoin.do" class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-envelope fa-fw w3-margin-right"></i>Sign Up</a>
+				class="fa fa fa-male fa-fw w3-margin-right"></i>Sign Up</a>
 			<a href="login.do" class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-envelope fa-fw w3-margin-right"></i>Login</a>
+				class="fa fa-user fa-fw w3-margin-right"></i>Login</a>
 		</c:if>
 		<c:if test="${sessionScope.email!=null && sessionScope.mem_Grd_Code eq '002'}">
 			<a href="admin.do" class="w3-bar-item w3-button w3-padding"><i
@@ -60,7 +60,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<a href="myPage.do" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-envelope fa-fw w3-margin-right"></i>MyPage</a>
 			<a href="logout.do" class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
+				class="fa fa-user fa-fw w3-margin-right"></i>Logout</a>
 
 		</c:if>
 

@@ -23,10 +23,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-black w3-xlarge w3-padding-32">${gameName}</li>
           <c:forEach var="list" items="${firstList}" varStatus="i">
-         	${i.count}위
-         	 <li class="w3-padding-16">이름: ${list.nicName} 
-         	 	<P>최고점수: ${list.highScore}
-         	 	<p>승률 : (${list.winRate}%)</li>
+         	<c:choose>
+         		<c:when test = "${list.highScore eq null}" >
+         			<li class="w3-padding-16">당신의 자리에 도전하세요!</li>
+         		</c:when>
+         		<c:otherwise>
+         			<strong>${i.count} 위</strong>
+		         	 <li class="w3-padding-16">
+		         	 	이름: ${list.nicName} 
+		         	 	<P>최고점수: ${list.highScore}
+		         	 	(승률 : ${list.winRate}%)
+		         	 </li>
+         		</c:otherwise>
+         	</c:choose>
 		  </c:forEach>
           <li class="w3-padding-16">
             <h2>최고 점수 :${highScore}</h2>
