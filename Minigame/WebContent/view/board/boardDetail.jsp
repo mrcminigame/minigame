@@ -77,7 +77,8 @@
 <br>
   <p>
   <button type="button" id="listBtn" class="w3-button w3-teal" style="width:120px" onclick=" location.href='board.do'">목록 &nbsp;</button>
-   <c:if test="${sessionScope.mem_Grd_Code eq '002'}">
+
+   <c:if test=${sessionScope.mem_Grd_Code eq '002'}">
 	 <button type="button" id="delBoardInq" class="w3-button w3-red" style="width:120px">삭제 </button>
    </c:if>
  </div>
