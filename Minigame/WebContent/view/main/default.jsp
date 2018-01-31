@@ -39,7 +39,7 @@
 					class="w3-hover-opacity">
 				<div class="w3-container w3-white">
 					<p>
-						<b>Lorem Ipsum</b>
+						<b>°³¹ßÁß</b>
 					</p>
 					<p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo
 						condimentum, porta lectus vitae, ultricies congue gravida diam non
