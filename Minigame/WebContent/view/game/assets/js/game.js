@@ -6,8 +6,8 @@ var snake, apple, squareSize, score, speed,
 var Game = {
     preload : function() {
         // 뱀의 몸통과 사과 이미지 두개를 preload 해놓는다.
-        game.load.image('snake', './view/game/asset/snake.png');
-        game.load.image('apple', './view/game/asset/apple.png');
+        game.load.image('snake', './view/game/assets/images/snake.png');
+        game.load.image('apple', './view/game/assets/images/apple.png');
     },
  
     create : function() {

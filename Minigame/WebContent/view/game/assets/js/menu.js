@@ -2,7 +2,7 @@
 var Menu = {
 	    preload : function() {
 	        // game 객체에서 menu 이미지를 로드한다.
-	        game.load.image('menu', 'menu.png');
+	        game.load.image('menu', './view/game/assets/images/menu.png');
 	    },
 	 
 	    create: function () {
@@ -15,6 +15,5 @@ var Menu = {
 	        this.state.start('Game');
 	    }
 	};
-	Colored
 
 

@@ -6,16 +6,12 @@
     <meta charset="UTF-8" />
  
     <title>Snake</title>
- 
     <script src="./view/game/assets/js/phaser.min.js"></script>
     <script src="./view/game/assets/js/menu.js"></script>
     <script src="./view/game/assets/js/game.js"></script>
-    <script src="./view/game/assets/game_over.js"></script>
+    <script src="./view/game/assets/js/game_over.js"></script>
     <script src="./view/game/assets/js/main.js"></script>
 </head>
-<body style="margin-left:200px">
-
-</body>
 </html>
 
 

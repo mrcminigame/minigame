@@ -23,7 +23,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 
 
 </head>
@@ -73,20 +72,20 @@
 
 	<jsp:include page="${main_jsp }"></jsp:include>
 	<!-- Footer -->
+
 	<footer class="w3-black w3-container w3-padding-16 w3-margin-bottom"
 		id="footer" style="margin-left: 210px">
 	<div class="w3-third w3-container">
 		<img alt="mrc" src="view/main/images/Miracom_CI.png"
 			style="height: 120px">
 	</div>
-	<div class="w3-third w3-container ">
+	<div class="w3-third w3-container">
 		COPYRIGHT ⓒ 2018 <br> 서경진 kj.seo@miracom.co.kr<br> 이은비
 		eunbi91.lee@miracom.co.kr <br> 오진혁 jinhyeok.oh@miracom.co.kr <br>
 		장지해 jihae.jang@miracom.co.kr <br> MIRACOM Inc Co., Ltd ALL RIGHT
 		RESERVED.
 	</div>
 	<div class="w3-third w3-container"></div>
-
 
 	</footer>
 
