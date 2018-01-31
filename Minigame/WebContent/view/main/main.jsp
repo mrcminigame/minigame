@@ -81,7 +81,7 @@
 	<footer class="w3-black w3-container w3-padding-16 w3-margin-bottom" id="footer" style="margin-left: 210px">
 	<div class="w3-section w3-container w3-center w3-margin-right">
 	COPYRIGHT ⓒ 2018 <br>
-		서경진 kyungjin.seo@miracom.co.kr<br> 이은비 eunbee.lee@miracom.co.kr
+		서경진 kj.seo@miracom.co.kr<br> 이은비 eunbi91.lee@miracom.co.kr
 		<br> 오진혁 jinhyeok.oh@miracom.co.kr <br> 장지해 jihae.jang@miracom.co.kr
 		<br>
 		MIRACOM Inc Co., Ltd ALL RIGHT RESERVED.
