@@ -12,7 +12,6 @@ import com.mrc.board.controller.BoardDAO;
 import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
-import com.mrc.member.controller.MemberDAO;
 import com.mrc.rank.controller.RankDAO;
 import com.mrc.rank.controller.RankVO;
 
