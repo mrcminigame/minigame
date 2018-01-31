@@ -1,6 +1,8 @@
 package com.mrc.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -67,15 +69,13 @@ public class MemberController {
 	@RequestMapping("deleteMember.do")
 	public String deleteMember(HttpServletRequest req, HttpServletResponse res) 
 	{
-		HttpSession session = req.getSession();
+		String email = req.getParameter("useremail");
+		Map <String ,Object> map=new HashMap<>();
+		map.put("useYn", "N");
+		map.put("email", email);
+		
+		MemberDAO.deleteMember(map);
 
-		String email = req.getParameter("list.email");
-		System.out.println(email);
-		MemberDAO.deleteMember(email);
-		List<MemberVO> list = MemberDAO.getMemberList();		
-
-		req.setAttribute("list", list);
-		req.setAttribute("main_jsp", "../member/admin.jsp");
 		return "view/main/main.jsp";
 	}
 	@RequestMapping("loginOk.do")

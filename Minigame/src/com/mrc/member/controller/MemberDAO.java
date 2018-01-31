@@ -3,6 +3,7 @@ package com.mrc.member.controller;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -115,12 +116,12 @@ public class MemberDAO implements MemberService {
 		return list;
 	}
 
-	public static void deleteMember(String email) {
+	public static void deleteMember(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		System.out.println("Delete Member");
 		SqlSession session = ssf.openSession();
 		
-		session.update("deleteMember", email);
+		session.update("deleteMember", map);
 		session.commit();
 		session.close();
 		

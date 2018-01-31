@@ -58,6 +58,7 @@
 	})
 </script>
 <script type="text/javascript">
+
 	$(function() {
 		$('.ya').click(function() {
 			$(".ya").prop('class', 'btn btn-success');
@@ -88,6 +89,27 @@
 				$('#form').submit();
 			}
 
+		});
+		$('#delete').click(function() {
+			var useremail = $('#useremail').val();
+			$.ajax({
+				url : "deleteMember.do",
+				type : 'POST',
+				data : {
+					"useremail" : useremail
+				},
+				async : false,
+				success : function(data) {
+						alert("Å»ÅðÇÏ¿´½À´Ï´Ù.");
+						window.location.href="logout.do";
+						//"logout.do"
+						//window.history.back();
+				},error : function(error) {
+					alert(error)
+					alert("!!AJAX FAIL");
+				}
+
+			});
 		});
 	});
 </script>
@@ -154,7 +176,7 @@
 				<div class="form-group text-center">
 
 					<input type="button" class="btn btn-info" id="update" value="¼öÁ¤È®ÀÎ" />
-					<input type="submit" class="w3-btn w3-red" id="delete" value="Å»Åð"/>
+					<input type="button" class="w3-btn w3-red" id="delete" value="Å»Åð"/>
 					<a href="main.do" type="submit" class="btn btn-default">¼öÁ¤Ãë¼Ò</a>
 				</div>
 			</form>

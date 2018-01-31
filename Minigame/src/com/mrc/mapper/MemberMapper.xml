@@ -58,11 +58,11 @@
 		WHERE
 		email = #{email}
 	</update>
-	<update id="deleteMember" parameterType="String">
+	<update id="deleteMember" parameterType="java.util.Map">
 		UPDATE 
 			MEM_INFO
 		SET
-			USE_YN = 'N'
+			USE_YN = #{useYn}
 		WHERE
 			EMAIL = #{email}			
 	</update>
