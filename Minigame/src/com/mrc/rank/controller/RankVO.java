@@ -8,6 +8,7 @@ public class RankVO {
 	private int lose;
 	private int highScore;
 	private String gameName;
+	private String gameExp;
 	private String nicName;
 	private float winRate;
 	
@@ -65,6 +66,12 @@ public class RankVO {
 	}
 	public void setWinRate(float winRate) {
 		this.winRate = winRate;
+	}
+	public String getGameExp() {
+		return gameExp;
+	}
+	public void setGameExp(String gameExp) {
+		this.gameExp = gameExp;
 	}
 
 

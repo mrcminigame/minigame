@@ -4,7 +4,9 @@ package com.mrc.main.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +15,7 @@ import com.mrc.board.controller.BoardDAO;
 import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
-
+import com.mrc.gamemng.controller.GameMngDAO;
 import com.mrc.member.controller.MemberDAO;
 import com.mrc.member.controller.MemberVO;
 
@@ -63,20 +65,36 @@ public class MainController {
 		} catch (Exception ex) {
 			System.out.println("rank :" + ex.getMessage());
 		}
+	
 		RankDAO rd = new RankDAO();
-		int gameNo = 1;
-		List<RankVO> firstList = rd.rankListData(gameNo);
-		if(firstList.size()<6){
-			for(int i=0; i<6-firstList.size(); i++){
-				firstList.add(null);	
+		GameMngDAO gmd = new GameMngDAO();
+		
+		List <RankVO> gameList =	gmd.gameListData();
+		List<Map<String,Object>> resultList = new ArrayList<>();
+		
+		for(RankVO rv : gameList){										//게임 리스트 가져오기 
+			List<RankVO> rankList = rd.rankListData(rv.getGameNo());
+			int listSize = rankList.size();
+			int maxSize= 5-listSize;
+			int highScore =0;
+			if(rankList.size()<5){										//게임랭킹 5위까지 없을 경우 null채워줌
+				for(int i = 0; i < maxSize; i++){
+					rankList.add(null);	
+				}
 			}
+
+			if(listSize > 0){ 											// 해당게임에 대한 데이터가 하나라도 있으면 highscore넣어준다
+				highScore =  rankList.get(0).getHighScore();
+			}
+			
+			Map<String,Object> map = new HashMap<>();
+			map.put("highScore", highScore);
+			map.put("gameName", rv.getGameName());
+			map.put("firstList", rankList);
+			
+			resultList.add(map);
 		}
-		req.setAttribute("highScore", firstList.get(0).getHighScore());	
-		req.setAttribute("gameName", firstList.get(0).getGameName());	
-		req.setAttribute("firstList", firstList);
-		gameNo = 2;
-		List<RankVO> secondList = rd.rankListData(gameNo);
-		req.setAttribute("secondList", secondList);
+		req.setAttribute("resultList", resultList);
 		req.setAttribute("main_jsp", "../rank/rankList.jsp");
 		return "view/main/main.jsp";
 	}

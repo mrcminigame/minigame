@@ -5,16 +5,10 @@
 	<!-- 뉴스 표시 -->
 	<select id="gameMngListData" resultType="RankVO">
 		SELECT 
-			R.EMAIL
-			,R.GAME_NO
-			,R.TOTAL_SCORE
-			,R.WIN
-			,R.LOSE
-			,R.HIGH_SCORE
-			,MI.NIC_NAME
-			,GI.GAME_NAME
-		FROM RANK R, MEM_INFO MI, GAME_INFO GI
-		WHERE R.EMAIL = MI.EMAIL
-		AND R.GAME_NO = GI.GAME_NO
+			GAME_NO as gameNo
+			,GAME_NAME as gameName
+			,GAME_EXP as gameExp
+		FROM GAME_INFO 
+		WHERE USE_YN ='Y'
 	</select>
 </mapper>
