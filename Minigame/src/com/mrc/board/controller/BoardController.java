@@ -62,9 +62,7 @@ public class BoardController {
 		String flag = req.getParameter("flag");
 		BoardVO boardVO = new BoardVO();
 		boardVO.setBoardNo(boardNo);
-		//boardVO.setFlag("inq");
-		boardVO.setFlag("ans");
-		
+		boardVO.setFlag(flag);
 		bs.deleteBoard(boardVO);
 		if(flag.equals("ans")){
 			return "BoardDetailView.do?boardNo="+boardNo;

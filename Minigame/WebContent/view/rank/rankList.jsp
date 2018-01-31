@@ -28,7 +28,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
          			<li class="w3-padding-16">당신의 자리에 도전하세요!</li>
          		</c:when>
          		<c:otherwise>
-         			<strong>${i.count} 위</strong>
+         			<strong>${i.count} 위</strong><img src="./view/main/images/insignia.png"/>
 		         	 <li class="w3-padding-16">
 		         	 	이름: ${list.nicName} 
 		         	 	<P>최고점수: ${list.highScore}
@@ -40,7 +40,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <li class="w3-padding-16">
             <h2>최고 점수 :${highScore}</h2>
           </li>
-         
         </ul>
       </div>
       
