@@ -2,7 +2,7 @@ var Game_Over = {
  
     preload : function() {
         // Load the needed image for this game screen.
-        game.load.image('gameover', 'gameover.png');
+        game.load.image('gameover', './view/game/assets/images/gameover.png');
     },
  
     create : function() {
