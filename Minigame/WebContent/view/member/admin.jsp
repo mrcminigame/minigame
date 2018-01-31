@@ -13,11 +13,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Raleway", sans-serif
-}
-</style>
+
 </head>
 <body>
 	<c:choose>
