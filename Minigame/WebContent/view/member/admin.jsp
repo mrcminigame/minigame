@@ -13,11 +13,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Raleway", sans-serif
-}
-</style>
+
 </head>
 <body>
 	<c:choose>
@@ -36,11 +32,6 @@ body, h1, h2, h3, h4, h5, h6 {
 			</script>
 		</c:when>
 
-		<c:when test="${sessionScope.mem_Grd_Code eq '002'}">
-			<script>
-				alert("관리자입니다.");
-			</script>
-		</c:when>
 	</c:choose>
 	<div class="w3-main" style="margin-left: 250px">
 
@@ -66,7 +57,9 @@ body, h1, h2, h3, h4, h5, h6 {
 					<th>Modify Date</th>
 					<th>Current</th>
 				</tr>
+				
 				<c:forEach var="list" items="${list }">
+
 					<tr>
 						<td>${list.email}</td>
 						<td>${list.pwd }</td>
@@ -77,7 +70,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						<td>${list.mod_Dt }</td>
 						<td>${list.use_Yn }</td>
 					</tr>
-				</c:forEach>
+				</c:forEach>				
 			</table>
 		</div>
 	</div>

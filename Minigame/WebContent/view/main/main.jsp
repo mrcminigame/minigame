@@ -12,11 +12,19 @@
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Raleway", sans-serif
-}
-</style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="view/main/css/main.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 
 </head>
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
@@ -70,57 +78,20 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<jsp:include page="${main_jsp }"></jsp:include>
 	<!-- Footer -->
-	<footer class="w3-container w3-padding-32 w3-dark-grey"
-		style="margin-left: 250px">
-	<div class="w3-row-padding">
-		<!--  <div class="w3-third">
-	      <h3>FOOTER</h3>
-	      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-	      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-	    </div>
-	  
-	    <div class="w3-third">
-	      <h3>BLOG POSTS</h3>
-	      <ul class="w3-ul w3-hoverable">
-	        <li class="w3-padding-16">
-	          <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
-	          <span class="w3-large">Lorem</span><br>
-	          <span>Sed mattis nunc</span>
-	        </li>
-	        <li class="w3-padding-16">
-	          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
-	          <span class="w3-large">Ipsum</span><br>
-	          <span>Praes tinci sed</span>
-	        </li> 
-	      </ul>
-	    </div> -->
-
-		<div class="w3-third">
-			<h3>POPULAR TAGS</h3>
-			<p>
-				<span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">New York</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">London</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">IKEA</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">NORWAY</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">DIY</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Ideas</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Baby</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Family</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">News</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Clothing</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Shopping</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Sports</span> <span
-					class="w3-tag w3-grey w3-small w3-margin-bottom">Games</span>
-			</p>
-		</div>
+	<footer class="w3-black w3-container w3-padding-16 w3-margin-bottom" id="footer" style="margin-left: 210px">
+	<div class="w3-section w3-container w3-center w3-margin-right">
+	COPYRIGHT ⓒ 2018 <br>
+		서경진 kyungjin.seo@miracom.co.kr<br> 이은비 eunbee.lee@miracom.co.kr
+		<br> 오진혁 jinhyeok.oh@miracom.co.kr <br> 장지해 jihae.jang@miracom.co.kr
+		<br>
+		MIRACOM Inc Co., Ltd ALL RIGHT RESERVED.
 	</div>
+	<div class="w3-section w3-container w3-margin-right w3-center">
+			<img alt="mrc" src="view/main/images/Miracom_CI.png"style="height:120px">
+		</div>
+
 	</footer>
 
-	<div class="w3-black w3-center w3-padding-24"
-		style="margin-left: 250px">
-		Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-			title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a>
-	</div>
+
 </body>
 </html>

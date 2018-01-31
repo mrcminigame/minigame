@@ -114,4 +114,15 @@ public class MemberDAO implements MemberService {
 
 		return list;
 	}
+
+	public static void deleteMember(String email) {
+		// TODO Auto-generated method stub
+		System.out.println("Delete Member");
+		SqlSession session = ssf.openSession();
+		
+		session.update("deleteMember", email);
+		session.commit();
+		session.close();
+		
+	}
 }

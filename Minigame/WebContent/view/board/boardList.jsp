@@ -55,7 +55,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	</table>
 	<center>
          <ul class="pagination pagination-centered">
-            <li><a href="board.do?page=${curpage<11?curpage:curpage-10}">&laquo;</a></li>
+            <li><a href="board.do?page=1">&laquo;</a></li>
             <fmt:parseNumber var="num" value="${curpage/10}" integerOnly="true" />
             <c:set var="num" value="${num<=0?1:num*10}" />
             <c:forEach var="i" begin="${num}" end="${num==1?num+8:num+9}">
@@ -70,7 +70,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                </c:choose>
             </c:forEach>
             <li>
-               <a href="board.do?page=${curpage<=totalpage-10?curpage+10:curpage}">&raquo;</a>
+               <a href="board.do?page=${totalpage-1}">&raquo;</a>
             </li>
          </ul>
       </center>

@@ -8,7 +8,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="css/newmember.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script
@@ -155,7 +154,7 @@
 				<div class="form-group text-center">
 
 					<input type="button" class="btn btn-info" id="update" value="수정확인" />
-
+					<input type="submit" class="w3-btn w3-red" id="delete" value="탈퇴"/>
 					<a href="main.do" type="submit" class="btn btn-default">수정취소</a>
 				</div>
 			</form>

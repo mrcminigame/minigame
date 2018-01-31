@@ -51,6 +51,7 @@ public class MainController {
 		req.setAttribute("main_jsp", "../member/login.jsp");
 		return "view/main/main.jsp";
 	}
+	
 
 	@RequestMapping("myPage.do")
 	public String MyPage(HttpServletRequest req, HttpServletResponse res) {
