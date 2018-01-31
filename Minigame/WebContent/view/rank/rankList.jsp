@@ -41,6 +41,7 @@
 	        </ul>
 	      </div>
       </c:forEach>
+      
     <%--   <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-teal w3-xlarge w3-padding-32">카드뒤집기</li>
