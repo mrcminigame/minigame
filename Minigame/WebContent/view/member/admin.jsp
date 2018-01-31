@@ -36,11 +36,6 @@ body, h1, h2, h3, h4, h5, h6 {
 			</script>
 		</c:when>
 
-		<c:when test="${sessionScope.mem_Grd_Code eq '002'}">
-			<script>
-				alert("관리자입니다.");
-			</script>
-		</c:when>
 	</c:choose>
 	<div class="w3-main" style="margin-left: 250px">
 
@@ -66,7 +61,9 @@ body, h1, h2, h3, h4, h5, h6 {
 					<th>Modify Date</th>
 					<th>Current</th>
 				</tr>
+				
 				<c:forEach var="list" items="${list }">
+
 					<tr>
 						<td>${list.email}</td>
 						<td>${list.pwd }</td>
@@ -77,7 +74,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						<td>${list.mod_Dt }</td>
 						<td>${list.use_Yn }</td>
 					</tr>
-				</c:forEach>
+				</c:forEach>				
 			</table>
 		</div>
 	</div>

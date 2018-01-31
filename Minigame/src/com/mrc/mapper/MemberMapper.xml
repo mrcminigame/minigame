@@ -58,7 +58,15 @@
 		WHERE
 		email = #{email}
 	</update>
-	<select id = "getMemberList" resultType="MemberVO">
+	<update id="deleteMember" parameterType="String">
+		UPDATE 
+			MEM_INFO
+		SET
+			USE_YN = 'N'
+		WHERE
+			EMAIL = #{email}			
+	</update>
+	<select id="getMemberList" resultType="MemberVO">
 		SELECT * from MEM_INFO
 	</select>
 	<select id="searchResult" resultType="MemberVO" parameterType="String">

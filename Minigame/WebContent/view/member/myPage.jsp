@@ -155,7 +155,7 @@
 				<div class="form-group text-center">
 
 					<input type="button" class="btn btn-info" id="update" value="수정확인" />
-
+					<input type="submit" class="w3-btn w3-red" id="delete" value="탈퇴"/>
 					<a href="main.do" type="submit" class="btn btn-default">수정취소</a>
 				</div>
 			</form>

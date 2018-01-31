@@ -1,6 +1,5 @@
 package com.mrc.member.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +64,20 @@ public class MemberController {
 		session.invalidate();
 		return "view/main/main.jsp";
 	}
+	@RequestMapping("deleteMember.do")
+	public String deleteMember(HttpServletRequest req, HttpServletResponse res) 
+	{
+		HttpSession session = req.getSession();
+
+		String email = req.getParameter("list.email");
+		System.out.println(email);
+		MemberDAO.deleteMember(email);
+		List<MemberVO> list = MemberDAO.getMemberList();		
+
+		req.setAttribute("list", list);
+		req.setAttribute("main_jsp", "../member/admin.jsp");
+		return "view/main/main.jsp";
+	}
 	@RequestMapping("loginOk.do")
 	public String memberlogin(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
@@ -80,20 +93,28 @@ public class MemberController {
 		} else {
 			MemberVO vo = MemberDAO.passwordCheck(email);
 			if (pwd.equals(vo.getPwd())) {
-				result = "OK";
-				session.setAttribute("email", email);
-				session.setAttribute("nic_Name", vo.getNic_Name());
-				session.setAttribute("phone", vo.getPhone());
-				session.setAttribute("mem_Grd_Code", vo.getMem_Grd_Code());
-				session.setAttribute("mod_Dt", vo.getMod_Dt());
-				session.setAttribute("reg_Dt", vo.getReg_Dt());
-				session.setAttribute("use_Yn", vo.getUse_Yn());
-				session.setAttribute("pwd", vo.getPwd());
-				System.out.println(vo.getEmail());
-				System.out.println(vo.getNic_Name());
-				System.out.println(vo.getPwd());
-				System.out.println(vo.getMem_Grd_Code());
-				System.out.println(vo.getPhone());
+				if(vo.getUse_Yn().equals("Y"))
+				{
+					result = "OK";
+					session.setAttribute("email", email);
+					session.setAttribute("nic_Name", vo.getNic_Name());
+					session.setAttribute("phone", vo.getPhone());
+					session.setAttribute("mem_Grd_Code", vo.getMem_Grd_Code());
+					session.setAttribute("mod_Dt", vo.getMod_Dt());
+					session.setAttribute("reg_Dt", vo.getReg_Dt());
+					session.setAttribute("use_Yn", vo.getUse_Yn());
+					session.setAttribute("pwd", vo.getPwd());
+					System.out.println(vo.getEmail());
+					System.out.println(vo.getNic_Name());
+					System.out.println(vo.getPwd());
+					System.out.println(vo.getMem_Grd_Code());
+					System.out.println(vo.getPhone());
+				}
+				else if(vo.getUse_Yn().equals("N"))
+				{
+					result = "NOID";
+				}
+
 			} else {
 				result = "NOPWD";
 			}
