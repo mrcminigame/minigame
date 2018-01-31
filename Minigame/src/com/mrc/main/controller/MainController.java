@@ -88,7 +88,7 @@ public class MainController {
 			Map<String,Object> map = new HashMap<>();
 			map.put("highScore", highScore);
 			map.put("gameName", rv.getGameName());
-			map.put("firstList", rankList);
+			map.put("rankList", rankList);
 			
 			resultList.add(map);
 		}
