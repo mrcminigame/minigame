@@ -32,19 +32,14 @@
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 		style="z-index:3;width:200px;" id="mySidebar"> <br>
 	<div class="w3-container">
+	<img alt="mrc" src="view/main/images/minigames-logo.png"style="width:100%">
+	<div style="height:30px"></div>
 		<!--   <img src="images/avatar.jpg" style="width:45%;" class="w3-round"><br><br> -->
 		<c:if test="${sessionScope.email!=null }">
-			<h4>
-				<b>${sessionScope.email }</b>
-			</h4>
-			<p class="w3-text-grey">${sessionScope.nic_Name }</p>
+			
+			<p class="w3-text-grey">${sessionScope.nic_Name }님 환영합니다</p>
 		</c:if>
-		<c:if test="${sessionScope.email==null }">
-			<h4>
-				<b>환영합니다.</b>
-			</h4>
-			<p class="w3-text-grey">방문자님</p>
-		</c:if>
+		
 	</div>
 	<div class="w3-bar-block">
 		<a href="main.do" class="w3-bar-item w3-button w3-padding"><i
