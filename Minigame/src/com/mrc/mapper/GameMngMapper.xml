@@ -11,4 +11,5 @@
 		FROM GAME_INFO 
 		WHERE USE_YN ='Y'
 	</select>
+		<!-- 뉴스 표시 -->
 </mapper>

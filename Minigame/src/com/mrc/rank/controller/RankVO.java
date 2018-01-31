@@ -1,5 +1,7 @@
 package com.mrc.rank.controller;
 
+import java.util.List;
+
 public class RankVO {
 	private String email;
 	private int gameNo;

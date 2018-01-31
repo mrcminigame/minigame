@@ -16,6 +16,7 @@ import com.mrc.board.controller.BoardVO;
 import com.mrc.controller.Controller;
 import com.mrc.controller.RequestMapping;
 import com.mrc.gamemng.controller.GameMngDAO;
+import com.mrc.gamemng.controller.GameMngVO;
 import com.mrc.rank.controller.RankDAO;
 import com.mrc.rank.controller.RankVO;
 
@@ -23,6 +24,10 @@ import com.mrc.rank.controller.RankVO;
 public class MainController {
 	@RequestMapping("main.do")
 	public String main_page(HttpServletRequest req, HttpServletResponse res) {
+		GameMngDAO dao = new GameMngDAO();
+		List<RankVO> list = dao.gameListData();
+		
+		req.setAttribute("list", list);
 		req.setAttribute("main_jsp", "../main/default.jsp");
 		return "view/main/main.jsp";
 	}
@@ -67,7 +72,7 @@ public class MainController {
 		RankDAO rd = new RankDAO();
 		GameMngDAO gmd = new GameMngDAO();
 		
-		List <RankVO> gameList =	gmd.gameListData();
+		List <RankVO> gameList = gmd.gameListData();
 		List<Map<String,Object>> resultList = new ArrayList<>();
 		
 		for(RankVO rv : gameList){										//게임 리스트 가져오기 
@@ -161,5 +166,19 @@ public class MainController {
 		req.setAttribute("main_jsp", "../board/boardDetail.jsp");
 		return "view/main/main.jsp";
 	}
+	@RequestMapping("1.do")
+	public String snakeGame(HttpServletRequest req, HttpServletResponse res) {
 
+		req.setAttribute("main_jsp", "../game/snakeGame.jsp");
+
+		return "view/main/main.jsp";
+	}
+	
+	@RequestMapping("2.do")
+	public String ballGame(HttpServletRequest req, HttpServletResponse res) {
+
+		req.setAttribute("main_jsp", "../game/ballGame.jsp");
+
+		return "view/main/main.jsp";
+	}
 }
