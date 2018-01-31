@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="870" height="580"></canvas>
 
 <script>
     var canvas = document.getElementById("myCanvas");

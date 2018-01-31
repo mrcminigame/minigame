@@ -181,4 +181,12 @@ public class MainController {
 
 		return "view/main/main.jsp";
 	}
+	
+	@RequestMapping("3.do")
+	public String sudokuGame(HttpServletRequest req, HttpServletResponse res) {
+
+		req.setAttribute("main_jsp", "../game/othelloGame.jsp");
+
+		return "view/main/main.jsp";
+	}
 }
