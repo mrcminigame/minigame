@@ -10,6 +10,7 @@
 <body>
 
 	<div class="w3-main" style="margin-left: 250px">
+	
 		<div class="w3-row-padding" style="padding-top: 50px">
 			<c:forEach var="list" items="${list}">
 				<div class="w3-third w3-container w3-margin-bottom">

@@ -138,10 +138,10 @@
 			} else if (emailcheckBtn == "중복확인") {
 				alert("이메일을 중복확인 해주세요")
 			} else {
-				
+
 				$('#memForm').submit();
 			}
-			
+
 		});
 
 	});
@@ -150,17 +150,17 @@
 
 </head>
 <body>
-	<div class="bodybody">
-		<article class="container">
+	<div class="container">
 		<div class="page-header">
-			<h1 class="text-center" style="font-size: 30px; font-weight: bold;">
+			<h4 class="text-center" style="font-size: 30px; font-weight: bold;">
 				회원가입 <small></small>
-			</h1>
+			</h4>
 		</div>
 		<div class="col-md-6 col-md-offset-3" style="margin-top: 30px;">
 
 
-			<form method="post" action="memberInsert.do" id="memForm" accept-charset="EUC-KR" >
+			<form method="post" action="memberInsert.do" id="memForm"
+				accept-charset="EUC-KR">
 				<!-- 이메일 입력 -->
 				<div class="email form-group">
 					<label for="username">이메일</label>
@@ -212,7 +212,6 @@
 
 		</div>
 
-		</article>
 	</div>
 </body>
 </html>

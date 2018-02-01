@@ -23,7 +23,7 @@
 <hr>
 <div class="w3-main" style="margin-left:250px">
  <div class="w3-container w3-teal">
-  <h2>문의사항</h2>
+  <h4 class="text-center" style="font-size: 30px; font-weight: bold;">문의사항</h4>
 </div>
 <form class="w3-container w3-card-4" id="delFrm" action="delBoard.do" method="post">
 	<input type ="hidden" id="boardNo" name="boardNo" value="${param.boardNo}"/>

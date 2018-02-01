@@ -56,7 +56,6 @@
 	})
 </script>
 <script type="text/javascript">
-
 	$(function() {
 		$('.ya').click(function() {
 			$(".ya").prop('class', 'btn btn-success');
@@ -102,8 +101,8 @@
 				$('#changepwd').focus();
 				return;
 			} else {
-				result=confirm("탈퇴하시겠습니까?");
-				if(result){
+				result = confirm("탈퇴하시겠습니까?");
+				if (result) {
 					$.ajax({
 						url : "deleteMember.do",
 						type : 'POST',
@@ -112,30 +111,32 @@
 						},
 						async : false,
 						success : function(data) {
-								alert("탈퇴하였습니다.");
-								window.location.href="logout.do";
-								//"logout.do"
-								//window.history.back();
-						},error : function(error) {
+							alert("탈퇴하였습니다.");
+							window.location.href = "logout.do";
+							//"logout.do"
+							//window.history.back();
+						},
+						error : function(error) {
 							alert(error)
 							alert("!!AJAX FAIL");
 						}
 
 					});
 				} else {
-					
+
 				}
 			}
-			
+
 		});
 	});
 </script>
 
 </head>
 <body>
+	<h4>마이페이지</h4>
 	<div class="container">
 		<div class="page-header">
-			<h1 class="text-center">마이페이지</h1>
+			<h4 class="text-center" style="font-size: 30px; font-weight: bold;">마이페이지</h4>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
 
@@ -193,7 +194,7 @@
 				<div class="form-group text-center">
 
 					<input type="button" class="btn btn-info" id="update" value="수정확인" />
-					<input type="button" class="w3-btn w3-red" id="delete" value="탈퇴"/>
+					<input type="button" class="w3-btn w3-red" id="delete" value="탈퇴" />
 					<a href="main.do" type="submit" class="btn btn-default">수정취소</a>
 				</div>
 			</form>

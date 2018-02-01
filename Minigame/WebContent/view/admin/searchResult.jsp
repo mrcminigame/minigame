@@ -15,7 +15,7 @@
 	<div class="w3-main" style="margin-left: 250px">
 
 		<div class="w3-container w3-padding-large ">
-			<h1>검색결과</h1>
+			<h4 class="text-center" style="font-size: 30px; font-weight: bold;">검색결과</h4>
 			<a href="admin.do" type="button" class="btn btn-default">뒤로가기</a>
 			<hr>
 			<br>

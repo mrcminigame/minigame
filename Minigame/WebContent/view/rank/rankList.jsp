@@ -11,7 +11,7 @@
 <body>
     <!-- Pricing Tables -->
  <div class="w3-main" style="margin-left: 250px">
- 	 <h4>게임 별 Rank5</h4>
+ 	<h4 class="text-center" style="font-size: 30px; font-weight: bold;">게임 별 Rank5</h4>
     <div class="w3-row-padding" style="margin:0 -16px">
       <c:forEach var="result" items="${resultList}" varStatus="i">
 	      <div class="w3-third w3-margin-bottom">

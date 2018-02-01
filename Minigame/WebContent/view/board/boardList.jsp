@@ -18,7 +18,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <body>
 <div class="w3-main" style="margin-left:250px">
  <div class="w3-container w3-padding-large " >  
-    <h4 id="contact"><b>문의사항</b></h4>
+    <h4 class="text-center" style="font-size: 30px; font-weight: bold;"><b>문의사항</b></h4>
   
     <hr class="w3-opacity">
     <c:if test="${sessionScope.email!=null }">

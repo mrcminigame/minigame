@@ -17,12 +17,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="bodybody">
-		<article class="container">
+	<div class="container">
 		<div class="page-header">
-			<h1 class="text-center" style="font-size: 30px; font-weight: bold;">
+			<h4 class="text-center" style="font-size: 30px; font-weight: bold;">
 				로그인 <small></small>
-			</h1>
+			</h4>
 		</div>
 		<div class="col-md-6 col-md-offset-3" style="margin-top: 30px;">
 
@@ -31,11 +30,11 @@
 				accept-charset="EUC-KR">
 				<!-- 이메일 입력 -->
 				<div class="email form-group">
-					<label for="username">이메일</label>
-					<input type="text" class="form-control" name="email" id="email"
-							placeholder="ex)hong@gildong.com"> <span
-							class="input-group-btn"> </span>
-				
+					<label for="username">이메일</label> <input type="text"
+						class="form-control" name="email" id="email"
+						placeholder="ex)hong@gildong.com"> <span
+						class="input-group-btn"> </span>
+
 				</div>
 				<!-- 비밀번호 입력 -->
 				<div class="form-group">
@@ -55,7 +54,6 @@
 
 		</div>
 
-		</article>
 	</div>
 </body>
 </html>

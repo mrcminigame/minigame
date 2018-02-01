@@ -16,6 +16,8 @@
 
 </head>
 <body>
+	<h4 class="text-center" style="font-size: 30px; font-weight: bold;">관리자
+		페이지</h4>
 	<c:choose>
 
 		<c:when test="${sessionScope.email == null }">
@@ -33,8 +35,8 @@
 		</c:when>
 
 	</c:choose>
-	<div class="w3-main" style="margin-left: 250px">
 
+	<div class="w3-main" style="margin-left: 250px">
 		<div class="w3-container w3-padding-large ">
 			<form method="post" action="searchResult.do">
 				<div class="w3-threequarter">
@@ -57,7 +59,7 @@
 					<th>Modify Date</th>
 					<th>Current</th>
 				</tr>
-				
+
 				<c:forEach var="list" items="${list }">
 
 					<tr>
@@ -70,7 +72,7 @@
 						<td>${list.mod_Dt }</td>
 						<td>${list.use_Yn }</td>
 					</tr>
-				</c:forEach>				
+				</c:forEach>
 			</table>
 		</div>
 	</div>
