@@ -61,7 +61,8 @@
 		<c:if test="${sessionScope.email!=null }">
 			<a href="myPage.do" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-envelope fa-fw w3-margin-right"></i>MyPage</a>
-			<a href="logout.do" class="w3-bar-item w3-button w3-padding"><i
+			<a id="logout" class="w3-bar-item w3-button w3-padding"><i
+			
 				class="fa fa-user fa-fw w3-margin-right"></i>Logout</a>
 
 		</c:if>
@@ -90,4 +91,14 @@
 
 
 </body>
+<script type="text/javascript">
+
+	$(function() {
+		$('#logout').click(function() {
+			if(confirm('로그아웃 하시겠습니까?')){
+				location.href ="logout.do";
+			}
+		});
+	})
+</script>
 </html>
