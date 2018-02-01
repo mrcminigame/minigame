@@ -27,7 +27,6 @@
 			         	 <li class="w3-padding-16">
 			         	 	이름: ${list.nicName} 
 			         	 	<P>최고점수: ${list.highScore}
-			         	 	(승률 : ${list.winRate}%)
 			         	 </li>
 	         		</c:otherwise>
 	         	</c:choose>
@@ -38,21 +37,6 @@
 	        </ul>
 	      </div>
       </c:forEach>
-      
-    <%--   <div class="w3-third w3-margin-bottom">
-        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-teal w3-xlarge w3-padding-32">카드뒤집기</li>
-			<c:forEach var="list" items="${secondList}" end="5">
-		         			<li class="w3-padding-16">${list.nicName} : ${list.highScore}(${list.winRate}%)</li>
-
-		  	</c:forEach>
-          	<li class="w3-padding-16">
-            <h2>최고 점수 :580</h2>
-          </li>
-         
-        </ul>
-      </div> --%>
-  
     </div>
 </div>
   
