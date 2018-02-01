@@ -8,16 +8,19 @@
 <title>Snake</title>
 
 </head>
+
 <script src="./view/game/assets/js/phaser.min.js"></script>
 <script src="./view/game/assets/js/menu.js"></script>
 <script src="./view/game/assets/js/game.js"></script>
 <script src="./view/game/assets/js/game_over.js"></script>
 <script src="./view/game/assets/js/main.js"></script>
 
-<body style="margin-left: 250px" class="w3-padding">
 
-
+<body>
+ <div id="snakeCanvas" style="margin-top: 10px; margin-left:400px;">
+</div> 
 </body>
+
 </html>
 
 

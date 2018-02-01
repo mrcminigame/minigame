@@ -115,7 +115,6 @@
 <!-- 동의 버튼 -->
 <script type="text/javascript">
 	$(function() {
-	debugger
 		$('#join').click(function() {
 			var nic_Name = $('#nic_Name').val();
 			var email = $('#email').val();

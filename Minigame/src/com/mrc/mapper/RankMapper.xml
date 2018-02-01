@@ -24,4 +24,21 @@
         )
       WHERE ROWNUM <![CDATA[ <]]> 6
 	</select>
-</mapper>
+	<update id="insertRank" parameterType="RankVO">
+		MERGE INTO rank r
+		USING dual
+		ON (r.game_no = #{gameNo} AND r.email = #{email})
+		WHEN MATCHED THEN update set r.high_score = #{highScore}
+		WHEN NOT MATCHED THEN insert ( r.email, r.game_no, r.high_score )
+		values ( #{email}, #{gameNo}, #{highScore} )
+	</update>
+	<!--  Snake 점수 받아오기 -->
+	<select id="getCurrentHighScore" parameterType="String" resultType="int">
+		SELECT
+			HIGH_SCORE as highScore
+		FROM
+			RANK
+		WHERE
+			EMAIL = #{email}
+	</select>
+</mapper> 
