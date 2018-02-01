@@ -2,23 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mrc.mapper.MemberMapper">
-	<!-- 회원정보 조회 -->
-	<select id="selectMemberList" parameterType="java.util.Map"
-		resultType="MemberVO">
-		SELET
-		MEM_EML <!-- 이메일주소(아이디) -->
-		<!-- ,PWD -->
-		,MEM_NM /*이름*/
-		,NIC_NM /*닉네임*/
-		,PHN_NUM /*전화번호*/
-		,MEM_GRD_CODE /*등급*/
-		,JOIN_DT /*등록날짜*/
-		,DOT_DT /*삭제일*/
-		,MEM_STAT_CODE
-		FROM MEM_INFO
-		WHERE
-		MEM_STAT_CODE = '0001'
-	</select>
+	
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT count(*)
 		FROM MEM_INFO
@@ -58,6 +42,8 @@
 		WHERE
 		email = #{email}
 	</update>
+	
+	<!-- 회원 탈퇴 -->
 	<update id="deleteMember" parameterType="java.util.Map">
 		UPDATE 
 			MEM_INFO
@@ -66,8 +52,14 @@
 		WHERE
 			EMAIL = #{email}			
 	</update>
+	
+	<!-- 회원정보 조회 -->
 	<select id="getMemberList" resultType="MemberVO">
-		SELECT * from MEM_INFO
+		SELECT 
+			MI.* 
+		FROM MEM_INFO MI, CODE_INFO CI 
+		WHERE
+			MI.MEM_GRD_CODE = CI.CODE 
 	</select>
 	<select id="searchResult" resultType="MemberVO" parameterType="String">
 		select * from MEM_INFO where email like '%'||#{searchKey}||'%'

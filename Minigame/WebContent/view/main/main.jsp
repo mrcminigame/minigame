@@ -42,7 +42,7 @@
 	</div>
 	<div class="w3-bar-block">
 		<a href="main.do" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-home fa-fw w3-margin-right"></i>Main</a>
+			class="fa fa-home fa-fw w3-margin-right"></i>Game</a>
 	    <a href="rank.do" class="w3-bar-item w3-button w3-padding"><i
 			class="fa fa fa-bars fa-fw w3-margin-right"></i>Rank</a> 
 		<a href="board.do"	class="w3-bar-item w3-button w3-padding"><i

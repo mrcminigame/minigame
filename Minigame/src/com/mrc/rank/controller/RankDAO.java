@@ -29,4 +29,5 @@ public class RankDAO implements RankService{
 		session.close();
 		return list;
 	}
+
 }

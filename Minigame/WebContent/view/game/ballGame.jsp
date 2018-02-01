@@ -8,9 +8,12 @@
     <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
 </head>
 <body>
+<form id ="gameFrm" method="POST" action="insertRank.do">
+	<input type="hidden" id="highScore" name="highScore" value =""/>
+	<input type="hidden" id="gameNo" name="gameNo" value ="2"/>
+</form>
 
-<canvas id="myCanvas" width="870" height="580"></canvas>
-
+<canvas id="myCanvas" width="480" height="460"></canvas>
 <script>
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
@@ -146,7 +149,8 @@
                 lives--;
                 if(!lives) {
                     alert("GAME OVER");
-                    document.location.reload();
+                    $('#highScore').val(score);
+					$('#gameFrm').submit();      
                 }
                 else {
                     x = canvas.width/2;
