@@ -92,24 +92,43 @@
 		});
 		$('#delete').click(function() {
 			var useremail = $('#useremail').val();
-			$.ajax({
-				url : "deleteMember.do",
-				type : 'POST',
-				data : {
-					"useremail" : useremail
-				},
-				async : false,
-				success : function(data) {
-						alert("탈퇴하였습니다.");
-						window.location.href="logout.do";
-						//"logout.do"
-						//window.history.back();
-				},error : function(error) {
-					alert(error)
-					alert("!!AJAX FAIL");
-				}
+			var changepwd = $('#changepwd').val();
+			var checkpwd = $('#checkpwd').val();
+			var result;
+			if (changepwd.trim() == "") {
+				alert("비밀번호를 입력하세요");
+				$('#changepwd').focus();
+				return;
+			} else if (changepwd != checkpwd) {
+				alert("비밀번호가 일치하지 않습니다!")
+				$('#changepwd').focus();
+				return;
+			} else {
+				result=confirm("탈퇴하시겠습니까?");
+				if(result){
+					$.ajax({
+						url : "deleteMember.do",
+						type : 'POST',
+						data : {
+							"useremail" : useremail
+						},
+						async : false,
+						success : function(data) {
+								alert("탈퇴하였습니다.");
+								window.location.href="logout.do";
+								//"logout.do"
+								//window.history.back();
+						},error : function(error) {
+							alert(error)
+							alert("!!AJAX FAIL");
+						}
 
-			});
+					});
+				} else {
+					
+				}
+			}
+			
 		});
 	});
 </script>
