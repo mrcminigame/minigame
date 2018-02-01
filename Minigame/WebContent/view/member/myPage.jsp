@@ -20,7 +20,6 @@
 <script>
 	$(function() {
 		$('#checkBtn').click(function() {
-			debugger
 			var nic_Name = $('#nic_Name').val();
 			if (nic_Name.trim() == "") {
 				$('#nic_Name').focus();

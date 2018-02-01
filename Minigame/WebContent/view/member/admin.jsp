@@ -38,7 +38,7 @@
 		<div class="w3-container w3-padding-large ">
 			<form method="post" action="searchResult.do">
 				<div class="w3-threequarter">
-					<input class="w3-input" type="text" name="searchKey" value="검색" />
+					<input class="w3-input" type="text" name="searchKey" value="이메일 검색" />
 				</div>
 				<div class="w3-quarter">
 					<input type="submit" class="w3-button w3-blue" value="검색" />
