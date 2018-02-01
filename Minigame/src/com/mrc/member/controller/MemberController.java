@@ -61,7 +61,8 @@ public class MemberController {
 		req.setAttribute("vo", vo);
 		MemberDAO.memberUpdate(vo);
 		session.invalidate();
-		return "view/main/main.jsp";
+
+		return "main.do";
 	}
 	@RequestMapping("deleteMember.do")
 	public String deleteMember(HttpServletRequest req, HttpServletResponse res) 
