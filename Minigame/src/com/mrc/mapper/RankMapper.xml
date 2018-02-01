@@ -34,12 +34,15 @@
 		values ( #{email}, #{gameNo}, #{highScore} )
 	</update>
 	<!--  Snake 점수 받아오기 -->
-	<select id="getCurrentHighScore" parameterType="String" resultType="int">
+	<select id="getCurrentHighScore" parameterType="RankVO" resultType="RankVO">
 		SELECT
-			HIGH_SCORE as highScore
+			HIGH_SCORE as highScore,
+			EMAIL as email
 		FROM
 			RANK
 		WHERE
 			EMAIL = #{email}
+		AND
+			GAME_NO = #{gameNo}
 	</select>
 </mapper> 

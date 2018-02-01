@@ -20,20 +20,27 @@ public class GameMngController {
 		}
 		HttpSession session=req.getSession();
 		RankVO vo = new RankVO();
+		RankVO cVO = new RankVO();
 		String email = (String) session.getAttribute("email");
 		String gameNo = req.getParameter("gameNo");
 		int highScore = Integer.parseInt(req.getParameter("score"));
-		int currentHighScore = dao.getCurrentHighScore(email);
-
-		if(currentHighScore < highScore)
+		vo.setEmail(email);
+		vo.setGameNo(Integer.parseInt(gameNo));
+		vo.setHighScore(highScore);
+		
+		cVO = dao.getCurrentHighScore(vo);
+		try{
+			if(cVO.getHighScore() < highScore)
+			{
+				dao.insertRank(vo);	
+			}
+		}
+		catch(NullPointerException e)
 		{
-			vo.setEmail(email);
-			vo.setGameNo(Integer.parseInt(gameNo));
-			vo.setHighScore(highScore);
-			System.out.println("insert");
 			dao.insertRank(vo);
 		}
-
-		return "view/main/main.jsp";
+		
+		
+		return "main.do";
 	}
 }

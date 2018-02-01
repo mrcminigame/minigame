@@ -33,16 +33,13 @@ public class GameMngDAO implements GameMngService {
 	public void insertRank(RankVO vo) {
 		// TODO Auto-generated method stub
 		SqlSession session = ssf.openSession();
-		System.out.println(vo.getEmail());
-		System.out.println(vo.getGameNo());
-		System.out.println(vo.getHighScore());
 		session.update("insertRank", vo);
 		session.commit();
 	}
 	
-	public int getCurrentHighScore(String email) {
+	public RankVO getCurrentHighScore(RankVO vo) {
 		SqlSession session = ssf.openSession();
-		return session.selectOne("getCurrentHighScore", email); 
+		return session.selectOne("getCurrentHighScore", vo);  
 		
 	}
 }

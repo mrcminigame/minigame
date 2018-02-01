@@ -9,7 +9,7 @@
 </head>
 <body>
 <form id ="gameFrm" method="POST" action="insertRank.do">
-	<input type="hidden" id="highScore" name="highScore" value =""/>
+	<input type="hidden" id="score" name="score" value =""/>
 	<input type="hidden" id="gameNo" name="gameNo" value ="2"/>
 </form>
 
@@ -149,7 +149,7 @@
                 lives--;
                 if(!lives) {
                     alert("GAME OVER");
-                    $('#highScore').val(score);
+                    $('#score').val(score);
 					$('#gameFrm').submit();      
                 }
                 else {

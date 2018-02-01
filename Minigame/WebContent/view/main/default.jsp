@@ -13,17 +13,33 @@
 		<div class="w3-row-padding" style="padding-top: 50px">
 			<c:forEach var="list" items="${list}">
 				<div class="w3-third w3-container w3-margin-bottom">
-				<a href="${list.gameNo }.do">
-					<img src="./view/main/images/${list.gameNo }.png" alt="Norway"
-						style="width: 100%" class="w3-hover-opacity">
-					</a>
-					<div class="w3-container w3-white">
-						<p>
-							<b>${list.gameName }</b>
-						</p>
-						<p>${list.gameExp }</p>
-					</div>
+					<c:if test="${sessionScope.email != null }">
+						<a href="${list.gameNo }.do"> <img
+							src="./view/main/images/${list.gameNo }.png" alt="Norway"
+							style="width: 100%" class="w3-hover-opacity">
+						</a>
+						<div class="w3-container w3-white">
+							<p>
+								<b>${list.gameName }</b>
+							</p>
+							<p>${list.gameExp }</p>
+						</div>
+					</c:if>
+					<c:if test="${sessionScope.email == null }">
+
+						<img src="./view/main/images/${list.gameNo }.png" alt="Norway"
+							style="width: 100%" class="w3-hover-opacity">
+
+						<div class="w3-container w3-white">
+							<p>
+								<b>${list.gameName }</b>
+							</p>
+							<p>${list.gameExp }</p>
+						</div>
+					</c:if>
 				</div>
+
+
 			</c:forEach>
 		</div>
 	</div>

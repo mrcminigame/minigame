@@ -29,7 +29,6 @@ public class MemberDAO implements MemberService {
 
 	public static void memberJoin(MemberVO vo) {
 		SqlSession session = ssf.openSession(true);
-		System.out.println("ÈåÀ½");
 		session.insert("inserMemberInfo", vo);
 		session.commit();
 		session.close();
@@ -100,7 +99,6 @@ public class MemberDAO implements MemberService {
 	public static List<MemberVO> searchResult(String searchKey) {
 		// TODO Auto-generated method stub
 		List<MemberVO> list = new ArrayList();
-		System.out.println("DAO¿¡¼­ key°ª"+searchKey);
 		SqlSession session = ssf.openSession();
 		try {
 			list = session.selectList("searchResult", searchKey);
@@ -110,7 +108,6 @@ public class MemberDAO implements MemberService {
 			if (session != null)
 				session.close();
 		}
-			System.out.println(list.get(0).getEmail());
 		
 
 		return list;
@@ -118,7 +115,6 @@ public class MemberDAO implements MemberService {
 
 	public static void deleteMember(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		System.out.println("Delete Member");
 		SqlSession session = ssf.openSession();
 		
 		session.update("deleteMember", map);

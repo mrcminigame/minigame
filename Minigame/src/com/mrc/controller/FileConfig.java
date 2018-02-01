@@ -19,7 +19,6 @@ public class FileConfig {
 				String name = f.getName();
 				String ext = name.substring(name.lastIndexOf(".") + 1);
 				if (ext.equals("java")) {
-					System.out.println(ext);
 					String str = pack + "." + name.substring(0, name.lastIndexOf("."));
 					list.add(str);
 				}

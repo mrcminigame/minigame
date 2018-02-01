@@ -46,16 +46,13 @@ public class MemberController {
 
 		MemberVO vo=new MemberVO();
 		vo.setEmail(email);
-		System.out.println("변경요청한 비밀번호 : "+changepwd);
 		if(changepwd.equals(""))
 		{
 			vo.setPwd(pwd);
-			System.out.println("바꿀 비밀번호 입력 하지 않았음");
 		}			
 		else
 		{
 			vo.setPwd(changepwd);
-			System.out.println("바꿀 비밀번호 입력 되었음");
 		}			
 		vo.setNic_Name(nic_Name);
 		vo.setPhone(phone);
@@ -104,11 +101,6 @@ public class MemberController {
 					session.setAttribute("reg_Dt", vo.getReg_Dt());
 					session.setAttribute("use_Yn", vo.getUse_Yn());
 					session.setAttribute("pwd", vo.getPwd());
-					System.out.println(vo.getEmail());
-					System.out.println(vo.getNic_Name());
-					System.out.println(vo.getPwd());
-					System.out.println(vo.getMem_Grd_Code());
-					System.out.println(vo.getPhone());
 				}
 				else if(vo.getUse_Yn().equals("N"))
 				{
@@ -119,7 +111,6 @@ public class MemberController {
 				result = "NOPWD";
 			}
 		}
-		System.out.println(result);
 		req.setAttribute("result", result);
 		return "view/member/login_Ok.jsp";
 	}
@@ -138,7 +129,6 @@ public class MemberController {
 			System.out.println("emailCheck :" + ex.getMessage());
 		}
 		String email = req.getParameter("email");
-		System.out.println(email);
 		String count = MemberDAO.emailCheck(email);
 		req.setAttribute("count", count);
 		return "view/member/countCheck.jsp";
@@ -180,7 +170,6 @@ public class MemberController {
 			System.out.println("searchResult :" + ex.getMessage());
 		}
 		String searchKey = req.getParameter("searchKey");
-		System.out.println(searchKey);
 		
 		List<MemberVO> list = MemberDAO.searchResult(searchKey);
 		req.setAttribute("list", list);
@@ -200,10 +189,6 @@ public class MemberController {
 		String pwd = req.getParameter("pwd");
 		String nic_Name = req.getParameter("nic_Name");
 		String phone = req.getParameter("phone");
-		System.out.println(email);
-		System.out.println(pwd);
-		System.out.println(nic_Name);
-		System.out.println(phone);
 		vo.setEmail(email);
 		vo.setPwd(pwd);
 		vo.setNic_Name(nic_Name);

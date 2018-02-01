@@ -16,7 +16,7 @@ public class WebApplicationContext {
 	 */
 	public WebApplicationContext(String path) {
 		try {
-			System.out.println(path);
+			//System.out.println(path);
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			// SAX파서기 생성
 			// System.out.println("SAX파서기 생성");
@@ -31,7 +31,6 @@ public class WebApplicationContext {
 			for (String pack : packList) {
 				List<String> p = fc.componentScan(pack);
 				for (String s : p) {
-					System.out.println(s);
 					list.add(s);
 				}
 			}
