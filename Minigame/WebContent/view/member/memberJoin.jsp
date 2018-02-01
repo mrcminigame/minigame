@@ -88,7 +88,6 @@
 					"nic_Name" : nic_Name
 				},
 				success : function(res) {
-					alert(res.trim());
 					var count = res.trim();
 					if (count == 0) {
 						$("#checkBtn").prop('class', 'btn btn-success');
@@ -141,7 +140,6 @@
 				alert("이메일을 중복확인 해주세요")
 			} else {
 				
-				alert('회원가입');
 				$('#memForm').submit();
 			}
 			

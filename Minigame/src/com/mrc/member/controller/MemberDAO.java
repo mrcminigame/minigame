@@ -39,7 +39,6 @@ public class MemberDAO implements MemberService {
 
 		String check = Integer.toString(session.selectOne("emailCheck", email));
 		session.close();
-		System.out.println(check);
 		return check;
 	}
 
@@ -48,7 +47,6 @@ public class MemberDAO implements MemberService {
 
 		String check = Integer.toString(session.selectOne("nic_NameCheck", nic_Name));
 		session.close();
-		System.out.println("check : " + check);
 		return check;
 	}
 
@@ -70,11 +68,6 @@ public class MemberDAO implements MemberService {
 
 	public static void memberUpdate(MemberVO vo) {
 		SqlSession session = ssf.openSession();
-		System.out.println("회원수정");
-		System.out.println(vo.getEmail());
-		System.out.println(vo.getNic_Name());
-		System.out.println(vo.getPwd());
-		System.out.println(vo.getPhone());
 		session.update("memberUpdate", vo);
 		session.commit();
 		session.close();
@@ -108,7 +101,6 @@ public class MemberDAO implements MemberService {
 			if (session != null)
 				session.close();
 		}
-		
 
 		return list;
 	}
@@ -116,10 +108,10 @@ public class MemberDAO implements MemberService {
 	public static void deleteMember(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		SqlSession session = ssf.openSession();
-		
+
 		session.update("deleteMember", map);
 		session.commit();
 		session.close();
-		
+
 	}
 }
