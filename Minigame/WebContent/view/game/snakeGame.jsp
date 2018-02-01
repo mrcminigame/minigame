@@ -12,6 +12,11 @@
     <script src="./view/game/assets/js/game_over.js"></script>
     <script src="./view/game/assets/js/main.js"></script>
 </head>
+<body>
+ <div id="snakeCanvas" style="margin-top: 10px; margin-left:400px;">
+</div> 
+</body>
+
 </html>
 
 

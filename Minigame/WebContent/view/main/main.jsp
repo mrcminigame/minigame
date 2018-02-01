@@ -69,7 +69,6 @@
 	</div>
 	</nav>
 
-
 	<jsp:include page="${main_jsp }"></jsp:include>
 	<!-- Footer -->
 
